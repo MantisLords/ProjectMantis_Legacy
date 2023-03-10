@@ -2,6 +2,10 @@
 
 namespace Mantis;
 
+/// <summary>
+/// A datatype representing a value with error. It supports basic arithmetic +-*/Pow . It !only! calculates the correct
+/// error if in your formula the n
+/// </summary>
 public struct ErDouble
 {
     public double Value;

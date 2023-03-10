@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mantis", "Mantis\Mantis.csproj", "{6975FFF2-A6BB-4FFE-B46B-DE22549B3095}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MantisTrials", "MantisTrials\MantisTrials.csproj", "{A6E1F17E-04C8-40F6-BD34-8688BD46049B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MantisExamples", "MantisExamples\MantisExamples.csproj", "{B9A18FA9-D8BF-4C75-86DA-BD578C4AB047}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{6975FFF2-A6BB-4FFE-B46B-DE22549B3095}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6975FFF2-A6BB-4FFE-B46B-DE22549B3095}.Debug|Any CPU.ActiveCfg = Release|Any CPU
 		{6975FFF2-A6BB-4FFE-B46B-DE22549B3095}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{A6E1F17E-04C8-40F6-BD34-8688BD46049B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6E1F17E-04C8-40F6-BD34-8688BD46049B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6E1F17E-04C8-40F6-BD34-8688BD46049B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6E1F17E-04C8-40F6-BD34-8688BD46049B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9A18FA9-D8BF-4C75-86DA-BD578C4AB047}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9A18FA9-D8BF-4C75-86DA-BD578C4AB047}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9A18FA9-D8BF-4C75-86DA-BD578C4AB047}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9A18FA9-D8BF-4C75-86DA-BD578C4AB047}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

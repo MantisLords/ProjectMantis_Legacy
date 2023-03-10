@@ -40,6 +40,7 @@ public class GraphCreator : GraphicPageCreator
 
         //Handle Offset
         GraphRoot = new Transform(GraphicAccess.Root);
+        if (orientation == GraphOrientation.Landscape) offset = new Vector2(offset.y, offset.x);
         GraphRoot.SetPosition(offset);
 
         LayoutManager = new LayoutManager(xAxis, yAxis, orientation,sketchBook,size);
