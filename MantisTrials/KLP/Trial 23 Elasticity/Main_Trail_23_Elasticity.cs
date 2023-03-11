@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Mantis.DocumentEngine;
 using Mantis.DocumentEngine.TableCreator;
+using MantisTrials.KLP.Trial_24_Pandulum;
 using MathNet.Numerics;
 using MathNet.Numerics.LinearRegression;
 
@@ -29,7 +30,8 @@ public static class Main_Trail_23_Elasticity
         // Part_C_L3Depedency.Generate();
         // Part_D_CopperWire.Generate();
         
-        SalahudinExample.Generate();
+        //SalahudinExample.Generate();
+        Part_1_Stoppwatch.GenerateBoth();
         
         CurrentDocument.Save("KLP_Trail23_Elasticity_Printout.pdf");
 

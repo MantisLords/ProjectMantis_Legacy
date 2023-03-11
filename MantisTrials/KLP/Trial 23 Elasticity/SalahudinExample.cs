@@ -32,7 +32,19 @@ public static class SalahudinExample
         GraphCreator creator = new GraphCreator(
             document: CurrentDocument, sketchBook: sketchBook, xAxis: LinearAxis.Auto("Auslenkung"),
             yAxis: LinearAxis.Auto("Kraft"), orientation: GraphOrientation.Portrait);
+        string[][] tableContent = new string[data.Count][];
+        for (int i = 0; i < data.Count; i++)
+        {
+            RodData e = data[i];
+            tableContent[i] = new string[] { e.s.ToString(), e.F.ToString() };
+        }
+        CurrentTableCreator.AddTable("Kraft und Auslenkung Messdaten",
+            new string[]{"Auslenkung","Kraft"},
+            tableContent,
+            GlobalStyles.StandardTable,
+            1);
     }
+    
 
     private static List<RodData> InitializeRawData(Double[,] rawData)
     {
@@ -50,6 +62,7 @@ public static class SalahudinExample
 
         return data;
     }
+    
     private struct RodData
     {
         public ErDouble s;
