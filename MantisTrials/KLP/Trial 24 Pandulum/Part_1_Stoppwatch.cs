@@ -32,17 +32,16 @@ public static class Part_1_Stoppwatch
         List<PendulumData> dataSalah = InitializeDataWithError(BrassOneSalah, BrassTenSalah, Name.Salah);
        ErDouble meanOneSalah = CalculateMean(dataSalah, Name.Salah,1);
        ErDouble meanTenSalah = CalculateMean(dataSalah, Name.Salah, 10);
-       string[][] tableContentSalah = new string[dataSalah.Count+2][];
+       string[][] tableContentSalah = new string[dataSalah.Count][];
        for (int i = 0; i < dataSalah.Count; i++)
        {
            PendulumData e = dataSalah[i];
            tableContentSalah[i] = new string[] { e.OneSalah.ToString(), e.TenSalah.ToString() };
        }
-
-       tableContentSalah[dataSalah.Count ] = new string[] { meanOneSalah.ToString() };
-       tableContentSalah[dataSalah.Count + 1] = new string[] { meanTenSalah.ToString() };
+       CurrentTableCreator.Print($"Salahmittelwert {meanOneSalah} s");
+       CurrentTableCreator.Print($"Salahmittelwert10 {meanTenSalah} s");
        CurrentTableCreator.AddTable("Messdaten Salah",
-           new string[]{"Zeiten"},
+           new string[]{ "Zeiten" },
            tableContentSalah,
            GlobalStyles.StandardTable,
            1);
@@ -62,20 +61,22 @@ public static class Part_1_Stoppwatch
         List<PendulumData> dataThomas = InitializeDataWithError(BrassOneThomas, BrassTenThomas, Name.Thomas);
         ErDouble meanOneThomas = CalculateMean(dataThomas, Name.Thomas, 1);
         ErDouble meanTenThomas = CalculateMean(dataThomas, Name.Thomas, 10);
-        string[][] tableContentThomas = new string[dataThomas.Count+2][];
+        string[][] tableContentThomas = new string[dataThomas.Count][];
         for (int i = 0; i < dataThomas.Count; i++)
         {
             PendulumData e = dataThomas[i];
             tableContentThomas[i] = new string[] { e.OneThomas.ToString(), e.TenThomas.ToString() };
         }
 
-        tableContentThomas[dataThomas.Count ] = new string[] { meanOneThomas.ToString() };
-        tableContentThomas[dataThomas.Count + 1] = new string[] { meanTenThomas.ToString() };
+        // tableContentThomas[dataThomas.Count ] = new string[] { meanOneThomas.ToString() };
+        // tableContentThomas[dataThomas.Count + 1] = new string[] { meanTenThomas.ToString() };
         CurrentTableCreator.AddTable("Messdaten Thomas",
             new string[]{"Zeiten"},
             tableContentThomas,
             GlobalStyles.StandardTable,
             1);
+        CurrentTableCreator.Print($"Thomasmittelwert {meanOneThomas} s");
+        CurrentTableCreator.Print($"Thomasmittelwert10 {meanTenThomas} s");
     }
 
     private static List<PendulumData> InitializeDataWithError(double[] rawDataOne, double[] rawDataTen, Name name)

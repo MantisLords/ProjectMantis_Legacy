@@ -6,15 +6,18 @@
     <projectFile>MantisTrials/MantisTrials.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="656ca9fb-d6dd-4a4e-a656-aec09136223d" name="Changes" comment="Refactored Mantis Project">
+    <list default="true" id="656ca9fb-d6dd-4a4e-a656-aec09136223d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Part_2_Objective_Measurement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mantis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mantis/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MantisTrials/KLP/Trial 23 Elasticity/Main_Trail_23_Elasticity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 23 Elasticity/Main_Trail_23_Elasticity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisTrials/KLP/Trial 23 Elasticity/SalahudinExample.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 23 Elasticity/SalahudinExample.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MantisTrials/KLP/Trial 23 Elasticity/Part_D_CopperWire.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 23 Elasticity/Part_D_CopperWire.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Main_Trial_24_Pandulum.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Main_Trial_24_Pandulum.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Part_1_Stoppwatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Part_1_Stoppwatch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MantisTrials/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/KLP_Trail23_Elasticity_Printout.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/KLP_Trail23_Elasticity_Printout.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/MantisTrials.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/MantisTrials.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/MantisTrials.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/MantisTrials.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.pdb" afterDir="false" />
@@ -54,22 +57,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\User\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\User\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\User\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\User\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\User\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\User\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Project.MantisTrials">
     <configuration name="Mantis" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -192,7 +195,8 @@
       <workItem from="1678363100425" duration="18023000" />
       <workItem from="1678435685156" duration="1000000" />
       <workItem from="1678442267690" duration="6991000" />
-      <workItem from="1678461176334" duration="17113000" />
+      <workItem from="1678461176334" duration="19180000" />
+      <workItem from="1678647094032" duration="3858000" />
     </task>
     <task id="LOCAL-00001" summary="Git ignor">
       <created>1678384873599</created>
@@ -222,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678561925308</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Some Changes">
+      <created>1678566613748</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1678566613748</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,7 +260,8 @@
     <MESSAGE value="GitIgnorev2" />
     <MESSAGE value="Preliminary Push of Mantis v0.1" />
     <MESSAGE value="Refactored Mantis Project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored Mantis Project" />
+    <MESSAGE value="Some Changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some Changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

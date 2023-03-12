@@ -30,10 +30,9 @@ public static class Main_Trail_23_Elasticity
         // Part_C_L3Depedency.Generate();
         // Part_D_CopperWire.Generate();
         
-        //SalahudinExample.Generate();
         Part_1_Stoppwatch.GenerateBoth();
         
-        CurrentDocument.Save("KLP_Trail23_Elasticity_Printout.pdf");
+        CurrentDocument.Save("KLP_Trail24_Pendulum_Printout.pdf");
 
 
     }

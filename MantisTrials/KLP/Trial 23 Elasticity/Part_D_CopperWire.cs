@@ -82,11 +82,7 @@ public static class Part_D_CopperWire
 
         ErDouble elasticity = fit.GetSlope().Mul10E(8);
         CurrentTableCreator.Print($"Elasticity: {elasticity.Mul10E(-5)} MPa");
-
-        double value = 3.1565764;
-
-        string output = $"My value {value} Nice";
-
+        
     }
 
     private static List<WireData> InitializeRawData(double[,] rawData)
