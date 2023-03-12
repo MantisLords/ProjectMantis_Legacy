@@ -6,18 +6,15 @@
     <projectFile>MantisTrials/MantisTrials.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="656ca9fb-d6dd-4a4e-a656-aec09136223d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Part_2_Objective_Measurement.cs" afterDir="false" />
+    <list default="true" id="656ca9fb-d6dd-4a4e-a656-aec09136223d" name="Changes" comment="Probably working but cant get rid of a System.NullReferenceException">
+      <change afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Part_3_PhysicalPendulum.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Part_4_Pendulum2.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mantis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mantis/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisTrials/KLP/Trial 23 Elasticity/Main_Trail_23_Elasticity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 23 Elasticity/Main_Trail_23_Elasticity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisTrials/KLP/Trial 23 Elasticity/Part_D_CopperWire.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 23 Elasticity/Part_D_CopperWire.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Main_Trial_24_Pandulum.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Main_Trial_24_Pandulum.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Part_1_Stoppwatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Part_1_Stoppwatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisTrials/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/KLP_Trail23_Elasticity_Printout.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/KLP_Trail23_Elasticity_Printout.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Part_2_Objective_Measurement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Part_2_Objective_Measurement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/MantisTrials.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/MantisTrials.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/MantisTrials.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/MantisTrials.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.pdb" afterDir="false" />
@@ -196,7 +193,7 @@
       <workItem from="1678435685156" duration="1000000" />
       <workItem from="1678442267690" duration="6991000" />
       <workItem from="1678461176334" duration="19180000" />
-      <workItem from="1678647094032" duration="3858000" />
+      <workItem from="1678647094032" duration="13846000" />
     </task>
     <task id="LOCAL-00001" summary="Git ignor">
       <created>1678384873599</created>
@@ -233,7 +230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678566613748</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Probably working but cant get rid of a System.NullReferenceException">
+      <created>1678651086482</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1678651086482</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,7 +265,8 @@
     <MESSAGE value="Preliminary Push of Mantis v0.1" />
     <MESSAGE value="Refactored Mantis Project" />
     <MESSAGE value="Some Changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some Changes" />
+    <MESSAGE value="Probably working but cant get rid of a System.NullReferenceException" />
+    <option name="LAST_COMMIT_MESSAGE" value="Probably working but cant get rid of a System.NullReferenceException" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -271,6 +276,12 @@
             <option name="internal" value="false" />
           </properties>
           <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet Exception Breakpoints">
+          <properties exception="System.NullReferenceException" isInternal="false" displayValue="NullReferenceException" namespaceName="System">
+            <option name="internal" value="false" />
+          </properties>
+          <option name="timeStamp" value="4" />
         </breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Mantis/DocumentEngine/GraphCreator/SketchBook/StraightSketch.cs</url>

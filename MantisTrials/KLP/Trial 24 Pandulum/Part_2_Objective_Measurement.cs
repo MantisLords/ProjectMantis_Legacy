@@ -26,12 +26,13 @@ public class Part_2_Objective_Measurement
         List<ObjectiveData> electroData = InitializeDatawithError(electronic, Device.Electro);
         ErDouble meanLaser = CalculateMean(laserData, Device.Laser);
         ErDouble meanElectro = CalculateMean(electroData, Device.Electro);
-        CurrentTableCreator.Print($"meanLaser {meanLaser} s");
+        CurrentTableCreator.Print($"meanLaser: {meanLaser} s");
         CurrentTableCreator.Print($"Standard deviation {meanLaser*Math.Sqrt(laser.Length)} s");
         CurrentTableCreator.Print($"meanElectro {meanElectro} s");
-        CurrentTableCreator.Print($"Standard deviation {meanElectro*Math.Sqrt(electronic.Length)} s");
+        CurrentTableCreator.Print($"Standard deviation {meanElectro * Math.Sqrt(electronic.Length)} s");
 
     }
+
     
     private static List<ObjectiveData> InitializeDatawithError(double[] rawData, Device device)
     {

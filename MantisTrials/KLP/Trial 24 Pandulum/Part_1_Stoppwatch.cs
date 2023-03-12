@@ -137,6 +137,8 @@ public static class Part_1_Stoppwatch
 
         return sum / 10;
     }
+    
+    
     private struct PendulumData
     {
         public ErDouble OneThomas;
