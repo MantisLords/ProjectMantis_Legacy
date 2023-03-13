@@ -23,6 +23,7 @@ public static class Main_Trial_24_Pandulum
         Part_3_PhysicalPendulum.Generate();
         Part_4_Pendulum2.Generate();
         Part_4_Pendulum3.Generate();
+        Part_5_GravitationalAcceleration.Generate();
         CurrentDocument.Save("KLP_Trail24_Pendulum_Printout.pdf");
     }
 }
