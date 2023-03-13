@@ -8,7 +8,7 @@ namespace MantisTrials.KLP.Trial_24_Pandulum;
 public class Part_2_Objective_Measurement
 {
     private static MantisDocument CurrentDocument => Main_Trial_24_Pandulum.CurrentDocument;
-    private static TableCreator CurrentTableCreator => Main_Trail_23_Elasticity.CurrentTableCreator;
+    private static TableCreator CurrentTableCreator => Main_Trial_24_Pandulum.CurrentTableCreator;
 
     public static void Generate()
     {
@@ -27,9 +27,9 @@ public class Part_2_Objective_Measurement
         ErDouble meanLaser = CalculateMean(laserData, Device.Laser);
         ErDouble meanElectro = CalculateMean(electroData, Device.Electro);
         CurrentTableCreator.Print($"meanLaser: {meanLaser} s");
-        CurrentTableCreator.Print($"Standard deviation {meanLaser*Math.Sqrt(laser.Length)} s");
+        CurrentTableCreator.Print($"Standard deviation {meanLaser.Error * Math.Sqrt(laser.Length)} s");
         CurrentTableCreator.Print($"meanElectro {meanElectro} s");
-        CurrentTableCreator.Print($"Standard deviation {meanElectro * Math.Sqrt(electronic.Length)} s");
+        CurrentTableCreator.Print($"Standard deviation {meanElectro.Error * Math.Sqrt(electronic.Length)} s");
 
     }
 

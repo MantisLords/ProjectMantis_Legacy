@@ -18,9 +18,11 @@ public static class Main_Trial_24_Pandulum
         CurrentDocument = new MantisDocument(MantisDocument.PrinterPhysicLibraryUniWue);
         CurrentTableCreator = new TableCreator(CurrentDocument);
         
-        //Part_1_Stoppwatch.GenerateBoth();
-        //Part_2_Objective_Measurement.Generate();
+        Part_1_Stoppwatch.GenerateBoth();
+        Part_2_Objective_Measurement.Generate();
+        Part_3_PhysicalPendulum.Generate();
         Part_4_Pendulum2.Generate();
+        Part_4_Pendulum3.Generate();
         CurrentDocument.Save("KLP_Trail24_Pendulum_Printout.pdf");
     }
 }

@@ -6,13 +6,15 @@
     <projectFile>MantisTrials/MantisTrials.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="656ca9fb-d6dd-4a4e-a656-aec09136223d" name="Changes" comment="Probably working but cant get rid of a System.NullReferenceException">
-      <change afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Part_3_PhysicalPendulum.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Part_4_Pendulum2.cs" afterDir="false" />
+    <list default="true" id="656ca9fb-d6dd-4a4e-a656-aec09136223d" name="Changes" comment="Immer noch die gleiche Exception">
+      <change afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Part_4_Pendulum3.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Part_5_GravitationalAcceleration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mantis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mantis/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Main_Trial_24_Pandulum.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Main_Trial_24_Pandulum.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Part_1_Stoppwatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Part_1_Stoppwatch.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Part_2_Objective_Measurement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Part_2_Objective_Measurement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Part_3_PhysicalPendulum.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Part_3_PhysicalPendulum.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Part_4_Pendulum2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 24 Pandulum/Part_4_Pendulum2.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/MantisTrials.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/MantisTrials.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/MantisTrials.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/MantisTrials.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.csproj.CoreCompileInputs.cache" afterDir="false" />
@@ -193,7 +195,7 @@
       <workItem from="1678435685156" duration="1000000" />
       <workItem from="1678442267690" duration="6991000" />
       <workItem from="1678461176334" duration="19180000" />
-      <workItem from="1678647094032" duration="13846000" />
+      <workItem from="1678647094032" duration="19279000" />
     </task>
     <task id="LOCAL-00001" summary="Git ignor">
       <created>1678384873599</created>
@@ -237,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678651086482</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Immer noch die gleiche Exception">
+      <created>1678661253581</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1678661253581</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,7 +275,8 @@
     <MESSAGE value="Refactored Mantis Project" />
     <MESSAGE value="Some Changes" />
     <MESSAGE value="Probably working but cant get rid of a System.NullReferenceException" />
-    <option name="LAST_COMMIT_MESSAGE" value="Probably working but cant get rid of a System.NullReferenceException" />
+    <MESSAGE value="Immer noch die gleiche Exception" />
+    <option name="LAST_COMMIT_MESSAGE" value="Immer noch die gleiche Exception" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

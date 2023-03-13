@@ -11,7 +11,7 @@ namespace MantisTrials.KLP.Trial_24_Pandulum;
 public static class Part_1_Stoppwatch
 {
     private static MantisDocument CurrentDocument => Main_Trial_24_Pandulum.CurrentDocument;
-    private static TableCreator CurrentTableCreator => Main_Trail_23_Elasticity.CurrentTableCreator;
+    private static TableCreator CurrentTableCreator => Main_Trial_24_Pandulum.CurrentTableCreator;
 
     public static void GenerateBoth()
     {
