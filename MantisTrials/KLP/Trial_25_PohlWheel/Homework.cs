@@ -19,11 +19,13 @@ public class Homework
  public static void Generate()
  {
      List<WheelData> data = InitializeData();
-     double[,] tablecontent = new double[,];
+     string[][] tablecontent = new string[data.Count][];
      for (int i = 0; i < data.Count; i++)
      {
-         
+         WheelData e = data[i];
+         tablecontent[i] = new string[] {e.freqQuotient.ToString(), e.AmplitudeQuotient.ToString()};
      }
+     CurrentTableCreator.AddTable("Hausaufgabe");
  }
 
  private static List<WheelData> InitializeData()
