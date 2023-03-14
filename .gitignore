@@ -14,7 +14,10 @@
 /dataSources/
 /dataSources.local.xml
 #bin
-/bin/
-/obj/
-/Mantis/bin/*
-/Manits/obj/*
+Mantis/bin/*
+Mantis/obj/*
+MantisExamples/bin/*
+MantisExamples/obj/*
+MantisTrials/obj/*
+MantisTrials/bin/*
+

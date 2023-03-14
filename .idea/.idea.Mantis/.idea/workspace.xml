@@ -6,8 +6,13 @@
     <projectFile>MantisExamples/MantisExamples.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="656ca9fb-d6dd-4a4e-a656-aec09136223d" name="Changes" comment="">
+    <list default="true" id="656ca9fb-d6dd-4a4e-a656-aec09136223d" name="Changes" comment="Deleted bin and obj folders">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mantis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mantis/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mantis/DocumentEngine/GraphCreator/SketchBook/DataSetSketch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mantis/DocumentEngine/GraphCreator/SketchBook/DataSetSketch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mantis/DocumentEngine/TableCreator/TableCreator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mantis/DocumentEngine/TableCreator/TableCreator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MantisExamples/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisExamples/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MantisExamples/SimpleExamples/SimpleGraphExample.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisExamples/SimpleExamples/SimpleGraphExample.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,12 +44,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/cbb1acce47db4692853dddf5668e1fbf82a00/f6/8d9ef89d/XGraphics.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/MantisExamples/obj/Release/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3874f59d9efba5c2107687cddbc6532c4f8c9f1db79355b8cd313165ea11e6/Process.Windows.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4562fe71fa3a42a29438c8963fa580c6186a00/bd/bcfdff3e/Fit.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/cbb1acce47db4692853dddf5668e1fbf82a00/14/dd02dd83/OpenTypeDescriptor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5ceb0ff280b942e997625b32ee4c81b13a200/d5/72594909/Cells.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Mantis/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -148,6 +151,7 @@
       <workItem from="1678707072569" duration="1331000" />
       <workItem from="1678784513871" duration="7978000" />
       <workItem from="1678796037258" duration="5092000" />
+      <workItem from="1678801312084" duration="376000" />
     </task>
     <task id="LOCAL-00001" summary="Git ignor">
       <created>1678384873599</created>
@@ -212,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678801098272</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Deleted bin and obj folders">
+      <created>1678801549001</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1678801549001</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,7 +255,8 @@
     <MESSAGE value="Fixed .gitignore&#10;-Removed obj and bin folders from index" />
     <MESSAGE value="Tried fix .gitignore v2" />
     <MESSAGE value="Changed git ignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed git ignore" />
+    <MESSAGE value="Deleted bin and obj folders" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deleted bin and obj folders" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

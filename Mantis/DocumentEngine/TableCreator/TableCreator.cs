@@ -1,4 +1,6 @@
-﻿using MigraDoc.DocumentObjectModel;
+﻿using System.Collections.Generic;
+using System.Linq;
+using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 
 namespace Mantis.DocumentEngine.TableCreator;

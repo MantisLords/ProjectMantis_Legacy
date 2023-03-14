@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Mantis.DocumentEngine;
 
@@ -9,7 +11,7 @@ public class DataSetSketch : SketchCommand
     public string Name { get; }
 
     public DataMarkType? Type = null;
-
+    
     public DataSetSketch(List<DataPoint> dataPoints) : this("Data Points", dataPoints){}
 
     public DataSetSketch(string name, IEnumerable<DataPoint> dataPoints)
