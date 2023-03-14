@@ -74,7 +74,7 @@ public class Part_4_Pendulum3
             Tabelle[i] = new string[] { e.angle.ToString(), e.quotient.ToString() };
         }
         
-        CurrentTableCreator.AddTable(tablename:"Pendeldaten",
+        CurrentTableCreator.AddTable(tablename:"Messdaten Pendel 3",
             headers: new string[]{"Phi","Quotient"},
             content: Tabelle, //data.Select(e => new string[]{e.epsilon.ToString(),e.sigma.Mul10E(-8).ToString()}).ToArray(),
             style:GlobalStyles.StandardTable,
