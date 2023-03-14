@@ -1,4 +1,4 @@
-#Project Mantis
+# Project Mantis
 Project Mantis is a small library handling measurement data
 and then creating graphs on millimeter paper. For the to save
 to a pdf. So you can manually
