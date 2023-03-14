@@ -14,15 +14,25 @@ public class Part_5_GravitationalAcceleration
     {
         double[] periodenDauer = new double[]
         {
-
+            2.960,
+            2.959,
+            2.963,
+            2.960,
+            2.961,
+            2.960,
+            2.960,
+            2.958,
+            2.963,
+            2.962
         };
-        ErDouble LengthofRod = new ErDouble();
-        ErDouble LengthofObject = new ErDouble();
+        ErDouble LengthofRod = new ErDouble(2.147,0.0014);
+        ErDouble LengthofObject = new ErDouble(0.0049,0.0014);
+        ErDouble LengthTogether = (LengthofObject/2) + LengthofRod; 
 
         List<dataForG> data = InitializeDataWithError(periodenDauer);
         ErDouble periodenMean = CalculateMean(data);
-        CurrentTableCreator.Print($"Periodendauer: {periodenDauer} s");
-        CurrentTableCreator.Print($"g beträgt: {(4*Math.PI*LengthofRod)/(periodenMean*periodenMean)}");
+        CurrentTableCreator.Print($"Periodendauer: {periodenMean} s");
+        CurrentTableCreator.Print($"g beträgt: {(4*Math.PI*Math.PI*LengthTogether)/(periodenMean.Pow(2))}");
 
     }
 

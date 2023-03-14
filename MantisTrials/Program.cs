@@ -3,6 +3,6 @@
 using MantisTrials.KLP.Trial_23_Elasticity;
 using MantisTrials.KLP.Trial_24_Pandulum;
 
-Console.WriteLine("Hello, World!");
+Console.WriteLine("Lookin’ #");
 //Main_Trail_23_Elasticity.Process();
 Main_Trial_24_Pandulum.Process();

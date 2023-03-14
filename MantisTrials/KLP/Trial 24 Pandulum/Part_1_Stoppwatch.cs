@@ -22,45 +22,46 @@ public static class Part_1_Stoppwatch
     {
         double[] BrassOneSalah = new double[]
         {
-            1.45,1.33,1.48,1.52,1.58,1.52,1.43,1.53,1.56,1.55
+            1.41,1.56,1.47,1.53,1.56,1.47,1.47,1.53,1.50,1.53
         };// in s
         double[] BrassTenSalah = new double[]
         {
-            15.4,15.47,15.17,15.50,15.26,15.10,15.32,15.33,15.23,15.24
+            15.35,15.34,15.28,15.28,15.28,15.40,15.37,15.34,15.34,15.38
         };// in s
         
         List<PendulumData> dataSalah = InitializeDataWithError(BrassOneSalah, BrassTenSalah, Name.Salah);
-       ErDouble meanOneSalah = CalculateMean(dataSalah, Name.Salah,1);
-       ErDouble meanTenSalah = CalculateMean(dataSalah, Name.Salah, 10);
+       ErDouble meanOneSalah = Main_Trial_24_Pandulum.CalculateMean(dataSalah.Select(e => e.OneSalah.Value),out double stDSalahOne);
+       ErDouble meanTenSalah = Main_Trial_24_Pandulum.CalculateMean(dataSalah.Select(e => e.TenSalah.Value),out double stDSalahTen);
        string[][] tableContentSalah = new string[dataSalah.Count][];
        for (int i = 0; i < dataSalah.Count; i++)
        {
            PendulumData e = dataSalah[i];
            tableContentSalah[i] = new string[] { e.OneSalah.ToString(), e.TenSalah.ToString() };
        }
-       CurrentTableCreator.Print($"Salahmittelwert {meanOneSalah} s");
-       CurrentTableCreator.Print($"Salahmittelwert10 {meanTenSalah} s");
+       CurrentTableCreator.Print($"Salahmittelwert {meanOneSalah } s, Standardabweichung {stDSalahOne} s");
+       CurrentTableCreator.Print($"Salahmittelwert10 {meanTenSalah} s, Standardabweichung {stDSalahTen} s");
        CurrentTableCreator.AddTable("Messdaten Salah",
-           new string[]{ "Zeiten" },
+           new string[]{ "Eine Periode / s", "Zehn Perioden / s" },
            tableContentSalah,
            GlobalStyles.StandardTable,
            1);
+       CurrentTableCreator.MigraDoc.LastSection.AddParagraph();
     }
 
     public static void GenThomas()
     {
         double[] BrassOneThomas = new double[]
         {
-            1.23,1.93,1.48,1.52,1.68,1.52,1.22,1.53,1.66,1.15
+            1.43,1.59,1.53,1.46,1.59,1.53,1.62,1.62,1.43,1.53
         };// in s
         double[] BrassTenThomas = new double[]
         {
-            15.60,15.74,15.17,15.45,15.26,15.89,15.23,15.45,15.12,15.24
+            15.22,15.25,15.22,15.34,15.22,15.28,15.53,15.34,15.31,15.25
         };// in s
 
         List<PendulumData> dataThomas = InitializeDataWithError(BrassOneThomas, BrassTenThomas, Name.Thomas);
-        ErDouble meanOneThomas = CalculateMean(dataThomas, Name.Thomas, 1);
-        ErDouble meanTenThomas = CalculateMean(dataThomas, Name.Thomas, 10);
+        ErDouble meanOneThomas = Main_Trial_24_Pandulum.CalculateMean(dataThomas.Select(e=>e.OneThomas.Value),out double stDThomasOne);
+        ErDouble meanTenThomas = Main_Trial_24_Pandulum.CalculateMean(dataThomas.Select(e => e.TenThomas.Value), out double stDThomasTen);
         string[][] tableContentThomas = new string[dataThomas.Count][];
         for (int i = 0; i < dataThomas.Count; i++)
         {
@@ -70,13 +71,15 @@ public static class Part_1_Stoppwatch
 
         // tableContentThomas[dataThomas.Count ] = new string[] { meanOneThomas.ToString() };
         // tableContentThomas[dataThomas.Count + 1] = new string[] { meanTenThomas.ToString() };
+        CurrentTableCreator.Print($"Thomasmittelwert {meanOneThomas} s, Standardabwichung: {stDThomasOne} s");
+        CurrentTableCreator.Print($"Thomasmittelwert10 {meanTenThomas} s, Standardabweichung: {stDThomasTen} s");
         CurrentTableCreator.AddTable("Messdaten Thomas",
-            new string[]{"Zeiten"},
+            new string[]{"Eine Periode / s", "Zehn Perioden / s"},
             tableContentThomas,
             GlobalStyles.StandardTable,
             1);
-        CurrentTableCreator.Print($"Thomasmittelwert {meanOneThomas} s");
-        CurrentTableCreator.Print($"Thomasmittelwert10 {meanTenThomas} s");
+        CurrentTableCreator.MigraDoc.LastSection.AddParagraph();
+
     }
 
     private static List<PendulumData> InitializeDataWithError(double[] rawDataOne, double[] rawDataTen, Name name)
@@ -135,7 +138,7 @@ public static class Part_1_Stoppwatch
             }
         }
 
-        return sum / 10;
+        return sum / listdata.Count;
     }
     
     

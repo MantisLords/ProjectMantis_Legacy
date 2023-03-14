@@ -9,13 +9,27 @@ public class Part_2_Objective_Measurement
 {
     private static MantisDocument CurrentDocument => Main_Trial_24_Pandulum.CurrentDocument;
     private static TableCreator CurrentTableCreator => Main_Trial_24_Pandulum.CurrentTableCreator;
+    
+    private static double[] laser = new double[]
+    {
+        1.524,1.524,1.525,1.524,1.524,1.524,1.524,1.524,1.524,1.524
+    };
 
     public static void Generate()
     {
-        double[] laser = new double[]
-        {
-        1.518,1.519,1.519,1.519,1.519,1.518,1.519,1.519,1.519,1.519
-        };
+        ErDouble meanLaser = CalculateMeanLaserPeriod();
+        //ErDouble meanElectro = CalculateMean(electroData, Device.Electro);
+        CurrentTableCreator.Print($"meanLaser: {meanLaser} s");
+        List<ObjectiveData> laserData = InitializeDatawithError(laser, Device.Laser);
+        ErDouble dummyV = Main_Trial_24_Pandulum.CalculateMean(laserData.Select(e => e.ObjLaser.Value), out double stDLaser);
+        CurrentTableCreator.Print($"Standard deviation {stDLaser} s");
+        //CurrentTableCreator.Print($"meanElectro {meanElectro} s");
+        //CurrentTableCreator.Print($"Standard deviation {meanElectro.Error * Math.Sqrt(electronic.Length)} s");
+
+    }
+
+    public static ErDouble CalculateMeanLaserPeriod()
+    {
 
         double[] electronic = new double[]
         {
@@ -23,14 +37,10 @@ public class Part_2_Objective_Measurement
         };
 
         List<ObjectiveData> laserData = InitializeDatawithError(laser, Device.Laser);
-        List<ObjectiveData> electroData = InitializeDatawithError(electronic, Device.Electro);
-        ErDouble meanLaser = CalculateMean(laserData, Device.Laser);
-        ErDouble meanElectro = CalculateMean(electroData, Device.Electro);
-        CurrentTableCreator.Print($"meanLaser: {meanLaser} s");
-        CurrentTableCreator.Print($"Standard deviation {meanLaser.Error * Math.Sqrt(laser.Length)} s");
-        CurrentTableCreator.Print($"meanElectro {meanElectro} s");
-        CurrentTableCreator.Print($"Standard deviation {meanElectro.Error * Math.Sqrt(electronic.Length)} s");
-
+        //List<ObjectiveData> electroData = InitializeDatawithError(electronic, Device.Electro);
+        ErDouble meanLaser =
+            Main_Trial_24_Pandulum.CalculateMean(laserData.Select(e => e.ObjLaser.Value), out double stDLaser);
+        return meanLaser;
     }
 
     

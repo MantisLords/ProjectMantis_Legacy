@@ -15,62 +15,38 @@ public class Part_4_Pendulum2
 
     public static void Generate()
     {
-        double[,] hausaufgabe = new double[,]
-        {
-            { 5, 0.000476 },
-            { 10, 0.00191 },
-            { 15, 0.00430 },
-            { 20, 0.00768 },
-            { 25, 0.0121 },
-            { 30, 0.0175 },
-            { 35, 0.0240 },
-            { 40, 0.0317 },
-            { 45, 0.0408 },
-            { 50, 0.0512 },
-            { 55, 0.0634 },
-            { 60, 0.0776 },
-            // { 70, 0.113 },
-            // { 80, 0.162 },
-            // { 90, 0.231 },
-            // { 100, 0.328 },
-            // { 110, 0.470 },
-            // { 120, 0.680 },
-            // { 130, 0.997 }
-        };
         double[,] rawData = new double[,]
         {
-            {0,1.704},
-            {0,1.705},
-            {5,1.704},
-            {5,1.708},
-            {10,1.706},
-            {10,1.712},
-            {15,1.717},
+            {5,1.699},
+            {5,1.700},
+            {10,1.701},
+            {10,1.703},
             {15,1.706},
-            {20,1.712},
-            {20,1.717},
-            {25,1.724},
-            {25,1.722},
-            {30,1.731},
-            {30,1.732},
-            {35,1.741},
-            {35,1.743},
-            {40,1.756},
-            {40,1.753},
-            {45,1.774},
-            {45,1.770},
-            {50,1.786},
-            {50,1.787},
+            {15,1.706},
+            {20,1.711},
+            {20,1.711},
+            {25,1.719},
+            {25,1.719},
+            {30,1.728},
+            {30,1.729},
+            {35,1.739},
+            {35,1.739},
+            {40,1.752},
+            {40,1.752},
+            {45,1.767},
+            {45,1.767},
+            {50,1.783},
+            {50,1.783},
             {55,1.800},
-            {55,1.799},
+            {55,1.800},
             {60,1.822},
-            {60,1.821}
+            {60,1.822}
         };
 
         List<Pendulumdata> messungDaten = InitiateDataWithError(rawData);
-        List<Pendulumdata> theoretischeWerte = InitializeTheo(hausaufgabe);
+        List<Part_4_Pendulum3.TheoPendulumData> theoretischeWerte = Part_4_Pendulum3.GenerateTheoreticalTQuotient(60);
 
-        messungDaten = messungDaten.Select(e => CalculateQuotient(e, new ErDouble(1.704, Main_Trial_24_Pandulum.LASER_ERROR))).ToList();
+        messungDaten = messungDaten.Select(e => CalculateQuotient(e, new ErDouble(1.698, Main_Trial_24_Pandulum.LASER_ERROR))).ToList();
         
         SketchBook sketchBook = new SketchBook("Pendulum 2");
         List<DataPoint> points = new List<DataPoint>();
@@ -80,9 +56,9 @@ public class Part_4_Pendulum2
         }
         sketchBook.Add(new DataSetSketch(points));
         List<DataPoint> theoPoints = new List<DataPoint>();
-        foreach (Pendulumdata e in theoretischeWerte)
+        foreach (Part_4_Pendulum3.TheoPendulumData e in theoretischeWerte)
         {
-            points.Add(new DataPoint(e.angle,e.quotientTheo));
+            points.Add(new DataPoint(e.angleTheo,e.quotientTheo));
         }
         sketchBook.Add(new DataSetSketch(theoPoints));
 
@@ -105,22 +81,7 @@ public class Part_4_Pendulum2
             style:GlobalStyles.StandardTable,
             times:1);
     }
-
-    private static List<Pendulumdata> InitializeTheo(double[,] rawData)
-    {
-        List<Pendulumdata> data = new List<Pendulumdata>();
-        for (int i = 0; i < rawData.GetLength(0); i++)
-        {
-            
-                data.Add(new Pendulumdata()
-                {
-                    angle = new ErDouble(rawData[i,0],0),
-                    quotientTheo = new ErDouble(rawData[i, 1], 0)
-                });
-        }
-
-        return data;
-    }
+    
     private static List<Pendulumdata> InitiateDataWithError(double[,] rawData)
     {
         List<Pendulumdata> data = new List<Pendulumdata>();
@@ -151,6 +112,5 @@ public class Part_4_Pendulum2
         public ErDouble angle;
         public ErDouble period;
         public ErDouble quotient;
-        public ErDouble quotientTheo;
     }
 }
