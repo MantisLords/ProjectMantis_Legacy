@@ -105,9 +105,25 @@ public class LinearAxis : AxisKernel
         for (int millimiters = 0; millimiters < Length; millimiters+= 10)
         {
             double value = MMToUnit(millimiters);
-            string label = value.ToString();
+            int digits = GetDigitsOfSignificantGridLabeling();
+            string label = Math.Round(value,digits).ToString("G");
 
             yield return new LabelPlotInfo() {Label = label, Offset = millimiters};
         }
+    }
+
+    private int GetDigitsOfSignificantGridLabeling()
+    {
+        double range = MMToUnit(1) - MMToUnit(0);
+        int power = (int) Math.Floor(Math.Log10(range));
+
+        if (power >= 0)
+            power = 0;
+        else
+        {
+            power = -power;
+        }
+
+        return power;
     }
 }

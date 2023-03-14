@@ -33,4 +33,19 @@ public class FormattedPageCreator : PageCreator
             docRenderer.RenderPage(gfx,i+1);
         }
     }
+    
+    public void Print(string text)
+    {
+        MigraDoc.LastSection.AddParagraph(text);
+    }
+
+    public void AddPageBreak()
+    {
+        MigraDoc.LastSection.AddPageBreak();
+    }
+
+    public void AddNewSection()
+    {
+        MigraDoc.AddSection();
+    }
 }

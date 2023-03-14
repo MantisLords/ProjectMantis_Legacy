@@ -42,6 +42,11 @@ public class Canvas
     {
         gfx.DrawEllipse(style.Pen,GetRect(center,new Vector2(radius*2,radius*2)));
     }
+    
+    public void DrawSquare(Vector2 center, double sideLength, LineStyle style)
+    {
+        gfx.DrawRectangle(style.Pen,GetRect(center,new Vector2(sideLength,sideLength)));
+    }
 
     private XPoint CP(Vector2 v)
     {

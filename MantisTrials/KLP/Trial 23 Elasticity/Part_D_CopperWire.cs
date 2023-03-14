@@ -46,7 +46,7 @@ public static class Part_D_CopperWire
                     select new DataPoint(e.epsilon,e.sigma.Mul10E(-8))).ToList();
         LinearMinMaxFit fit = new LinearMinMaxFit(pointsInLinear);
         fit.SetReading(0.5,true,2.125,true);
-        sketchBook.Add(new StraightSketch<LinearFunction>(fit));
+        sketchBook.Add(new StraightSketch(fit));
 
         GraphCreator creator = new GraphCreator(document: CurrentDocument,
             sketchBook: sketchBook,
@@ -54,7 +54,7 @@ public static class Part_D_CopperWire
             yAxis: LinearAxis.Auto("Sigma / N/m^2 * 10^7"),
             orientation: GraphOrientation.Landscape);
         
-        CurrentTableCreator.AddTable(tablename:"Tab15: D Messdaten - Dehnung eines Kupferdrahts",
+        CurrentTableCreator.AddTable(tableName:"Tab15: D Messdaten - Dehnung eines Kupferdrahts",
             headers: new string[]{$"{GreekAlphabet.EPSILON}",$"{GreekAlphabet.SIGMA} / N/m^2 * 10^8"},
             content:data.Select(e => new string[]{e.epsilon.ToString(),e.sigma.Mul10E(-8).ToString()}).ToArray(),
             style:GlobalStyles.StandardTable,

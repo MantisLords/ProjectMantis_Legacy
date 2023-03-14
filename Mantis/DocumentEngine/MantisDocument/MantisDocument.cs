@@ -8,13 +8,13 @@ namespace Mantis.DocumentEngine;
 public class MantisDocument
 {
     public static readonly PrinterCorrections PrinterPhysicLibraryUniWue =
-        new PrinterCorrections(scale: new Vector2(180.0 / 175.0 * 180.0 / 179.0, 280.0 / 271.0 * 270.0 / 269.0),
+        new PrinterCorrections(scale: new Vector2(180.0 / 175.0 * 180.0 / 179.0, 280.0 / 271.0),
             offset: new Vector2(-4, -4));
     
     public PdfDocument PdfDocument { get; }
     public List<PageCreator> Pages { get; }
 
-    public PrinterCorrections Corrections { get; } = default;
+    public PrinterCorrections Corrections = new PrinterCorrections();
 
     private bool _isRendered = false;
 
