@@ -6,8 +6,7 @@
     <projectFile>MantisExamples/MantisExamples.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="656ca9fb-d6dd-4a4e-a656-aec09136223d" name="Changes" comment="Tried fix .gitignore v2">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="656ca9fb-d6dd-4a4e-a656-aec09136223d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mantis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mantis/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -148,7 +147,7 @@
       <workItem from="1678655352596" duration="1214000" />
       <workItem from="1678707072569" duration="1331000" />
       <workItem from="1678784513871" duration="7978000" />
-      <workItem from="1678796037258" duration="4704000" />
+      <workItem from="1678796037258" duration="5092000" />
     </task>
     <task id="LOCAL-00001" summary="Git ignor">
       <created>1678384873599</created>
@@ -206,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678800308186</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Changed git ignore">
+      <created>1678801098272</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1678801098272</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,7 +243,8 @@
     <MESSAGE value="-Edited README.md" />
     <MESSAGE value="Fixed .gitignore&#10;-Removed obj and bin folders from index" />
     <MESSAGE value="Tried fix .gitignore v2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tried fix .gitignore v2" />
+    <MESSAGE value="Changed git ignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed git ignore" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

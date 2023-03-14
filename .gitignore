@@ -16,3 +16,5 @@
 #bin
 /bin/
 /obj/
+/Mantis/bin/*
+/Manits/obj/*
