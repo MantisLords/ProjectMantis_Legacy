@@ -19,19 +19,24 @@ public class Homework
  public static void Generate()
  {
      List<WheelData> data = InitializeData();
-     string[][] tablecontent = new string[data.Count][];
+     string[][] tableContent = new string[data.Count][];
      for (int i = 0; i < data.Count; i++)
      {
          WheelData e = data[i];
-         tablecontent[i] = new string[] {e.freqQuotient.ToString(), e.AmplitudeQuotient.ToString()};
+         tableContent[i] = new string[] {e.freqQuotient.ToString("G4"), e.AmplitudeQuotient.ToString("G4")};
      }
-     CurrentTableCreator.AddTable("Hausaufgabe");
+     CurrentTableCreator.AddTable("Hausaufhabe",
+         new string[]{ "w/w0 ", "A/A0" },
+         tableContent,
+         GlobalStyles.StandardTable,
+         1);
+     CurrentTableCreator.MigraDoc.LastSection.AddParagraph();
  }
 
  private static List<WheelData> InitializeData()
  {
      List<WheelData> data = new List<WheelData>();
-     double sum = 0.0;
+     double sum = 0;
      for (int i = 0; i < 30; i++)
      {
          data.Add(new WheelData()
@@ -47,7 +52,7 @@ public class Homework
  }
  private struct WheelData
  {
-  public ErDouble freqQuotient;
-  public ErDouble AmplitudeQuotient;
+  public double freqQuotient;
+  public double AmplitudeQuotient;
  }
 }

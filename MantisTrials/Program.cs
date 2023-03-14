@@ -2,6 +2,8 @@
 
 using System;
 using MantisTrials.KLP.Trial_23_Elasticity;
+using MantisTrials.KLP.Trial_25_PohlWheel;
 
 Console.WriteLine("Hello, World!");
-Main_Trail_23_Elasticity.Process();
+
+Main_Trial_25_PohlWheel.Process();
