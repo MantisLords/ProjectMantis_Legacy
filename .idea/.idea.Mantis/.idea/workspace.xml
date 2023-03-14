@@ -6,94 +6,9 @@
     <projectFile>MantisExamples/MantisExamples.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="656ca9fb-d6dd-4a4e-a656-aec09136223d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Mantis/Utility/Statistics.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisExamples/SimpleExamples/SimpleTableExample.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisExamples/SimpleExamples/StatisticsExample.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisExamples/bin/Debug/net6.0/RandomStuff.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisExamples/bin/Debug/net6.0/SimpleGraphExample.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisExamples/bin/Debug/net6.0/SimpleTableExample.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisExamples/obj/Release/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisExamples/obj/Release/net6.0/MantisExamples.AssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisExamples/obj/Release/net6.0/MantisExamples.AssemblyInfoInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisExamples/obj/Release/net6.0/MantisExamples.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisExamples/obj/Release/net6.0/MantisExamples.GlobalUsings.g.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisExamples/obj/Release/net6.0/MantisExamples.assets.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisExamples/obj/Release/net6.0/MantisExamples.csproj.AssemblyReference.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/KLP_Trail23_Elasticity_Printout.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/Mantis.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/Mantis.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/MantisTrials.deps.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/MantisTrials.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/MantisTrials.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/MantisTrials.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/MantisTrials.runtimeconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/MathNet.Numerics.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/Microsoft.Win32.SystemEvents.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/MigraDoc.DocumentObjectModel.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/MigraDoc.Rendering.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/MigraDoc.RtfRendering.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/PdfSharp.Charting.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/PdfSharp.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/System.Drawing.Common.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/System.Text.Encoding.CodePages.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/de/MigraDoc.DocumentObjectModel.resources.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/de/MigraDoc.Rendering.resources.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/de/MigraDoc.RtfRendering.resources.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/de/PdfSharp.Charting.resources.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/de/PdfSharp.resources.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/runtimes/win/lib/net6.0/System.Drawing.Common.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/bin/Debug/net6.0/runtimes/win/lib/net6.0/System.Text.Encoding.CodePages.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.csproj.CopyComplete" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.genruntimeconfig.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/apphost.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/ref/MantisTrials.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/refint/MantisTrials.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/obj/Release/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/obj/Release/net6.0/MantisTrials.AssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/obj/Release/net6.0/MantisTrials.AssemblyInfoInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/obj/Release/net6.0/MantisTrials.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/obj/Release/net6.0/MantisTrials.GlobalUsings.g.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/obj/Release/net6.0/MantisTrials.assets.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MantisTrials/obj/Release/net6.0/MantisTrials.csproj.AssemblyReference.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="656ca9fb-d6dd-4a4e-a656-aec09136223d" name="Changes" comment="-Edited README.md">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mantis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mantis/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mantis/DocumentEngine/GlobalStyles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mantis/DocumentEngine/GlobalStyles.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mantis/DocumentEngine/GraphCreator/LayoutEngine/AxisKernel/LinearAxis.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mantis/DocumentEngine/GraphCreator/LayoutEngine/AxisKernel/LinearAxis.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mantis/DocumentEngine/GraphCreator/SketchBook/DataSetSketch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mantis/DocumentEngine/GraphCreator/SketchBook/DataSetSketch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mantis/DocumentEngine/GraphCreator/SketchBook/SketchBookStyle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mantis/DocumentEngine/GraphCreator/SketchBook/SketchBookStyle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mantis/DocumentEngine/GraphCreator/SketchBook/StraightSketch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mantis/DocumentEngine/GraphCreator/SketchBook/StraightSketch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mantis/DocumentEngine/GraphicsCore/Canvas.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mantis/DocumentEngine/GraphicsCore/Canvas.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mantis/DocumentEngine/GraphicsCore/Graphics/DataMarkErrorGraphic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mantis/DocumentEngine/GraphicsCore/Graphics/DataMarkErrorGraphic.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mantis/DocumentEngine/GraphicsCore/Graphics/DataMarkGraphic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mantis/DocumentEngine/GraphicsCore/Graphics/DataMarkGraphic.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mantis/DocumentEngine/MantisDocument/FormattedPageCreator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mantis/DocumentEngine/MantisDocument/FormattedPageCreator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mantis/DocumentEngine/MantisDocument/MantisDocument.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mantis/DocumentEngine/MantisDocument/MantisDocument.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mantis/DocumentEngine/TableCreator/TableCreator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mantis/DocumentEngine/TableCreator/TableCreator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mantis/Utility/ErDouble.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mantis/Utility/ErDouble.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mantis/Utility/Straights/MinMaxFit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mantis/Utility/Straights/MinMaxFit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisExamples/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisExamples/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisExamples/SimpleExamples/SimpleGraphExp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisExamples/SimpleExamples/SimpleGraphExample.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisExamples/SimpleExamples/SimpleTableExp.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisExamples/bin/Debug/net6.0/Mantis.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MantisExamples/bin/Debug/net6.0/Mantis.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisExamples/bin/Debug/net6.0/Mantis.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MantisExamples/bin/Debug/net6.0/Mantis.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisExamples/bin/Debug/net6.0/MantisExamples.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MantisExamples/bin/Debug/net6.0/MantisExamples.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisExamples/bin/Debug/net6.0/MantisExamples.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MantisExamples/bin/Debug/net6.0/MantisExamples.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisExamples/obj/Debug/net6.0/MantisExamples.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/MantisExamples/obj/Debug/net6.0/MantisExamples.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisExamples/obj/Debug/net6.0/MantisExamples.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/MantisExamples/obj/Debug/net6.0/MantisExamples.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisExamples/obj/Debug/net6.0/MantisExamples.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MantisExamples/obj/Debug/net6.0/MantisExamples.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisExamples/obj/Debug/net6.0/MantisExamples.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MantisExamples/obj/Debug/net6.0/MantisExamples.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisExamples/obj/Debug/net6.0/ref/MantisExamples.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MantisExamples/obj/Debug/net6.0/ref/MantisExamples.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisExamples/obj/Debug/net6.0/refint/MantisExamples.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MantisExamples/obj/Debug/net6.0/refint/MantisExamples.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisTrials/KLP/Trial 23 Elasticity/Part_A_ElasticityOfMaterial.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 23 Elasticity/Part_A_ElasticityOfMaterial.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisTrials/KLP/Trial 23 Elasticity/Part_C_L3Depedency.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 23 Elasticity/Part_C_L3Depedency.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisTrials/KLP/Trial 23 Elasticity/Part_D_CopperWire.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/KLP/Trial 23 Elasticity/Part_D_CopperWire.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisTrials/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/MantisTrials/obj/Debug/net6.0/MantisTrials.csproj.AssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,9 +18,10 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="Refactoring_Core" />
       </map>
     </option>
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -115,8 +31,16 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="master" />
+      </list>
+    </option>
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/cbb1acce47db4692853dddf5668e1fbf82a00/f6/8d9ef89d/XGraphics.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MantisExamples/obj/Release/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3874f59d9efba5c2107687cddbc6532c4f8c9f1db79355b8cd313165ea11e6/Process.Windows.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4562fe71fa3a42a29438c8963fa580c6186a00/bd/bcfdff3e/Fit.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/cbb1acce47db4692853dddf5668e1fbf82a00/14/dd02dd83/OpenTypeDescriptor.cs" root0="SKIP_HIGHLIGHTING" />
@@ -223,7 +147,7 @@
       <workItem from="1678655352596" duration="1214000" />
       <workItem from="1678707072569" duration="1331000" />
       <workItem from="1678784513871" duration="7978000" />
-      <workItem from="1678796037258" duration="1827000" />
+      <workItem from="1678796037258" duration="2778000" />
     </task>
     <task id="LOCAL-00001" summary="Git ignor">
       <created>1678384873599</created>
@@ -253,7 +177,21 @@
       <option name="project" value="LOCAL" />
       <updated>1678459601842</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Basic Refactoring&#10;-Changed Printer corrections in y about one mm&#10;-Removed Generics from StraightSketch&#10;-Add Exp and Log to ErDouble.cs&#10;-Reworked SimpleExamples&#10;-Added Default Style for TableCreator.cs&#10;-Fixed bug with small DataErrorMarkGraphic&#10;-Fixed bug with labeling graph axis numbering format&#10;-Added small documentation to ErDouble.cs&#10;-Added README.md">
+      <created>1678798372819</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1678798372819</updated>
+    </task>
+    <task id="LOCAL-00006" summary="-Edited README.md">
+      <created>1678798412624</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1678798412624</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,7 +218,9 @@
     <MESSAGE value="GitIgnorev2" />
     <MESSAGE value="Preliminary Push of Mantis v0.1" />
     <MESSAGE value="Refactored Mantis Project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored Mantis Project" />
+    <MESSAGE value="Basic Refactoring&#10;-Changed Printer corrections in y about one mm&#10;-Removed Generics from StraightSketch&#10;-Add Exp and Log to ErDouble.cs&#10;-Reworked SimpleExamples&#10;-Added Default Style for TableCreator.cs&#10;-Fixed bug with small DataErrorMarkGraphic&#10;-Fixed bug with labeling graph axis numbering format&#10;-Added small documentation to ErDouble.cs&#10;-Added README.md" />
+    <MESSAGE value="-Edited README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Edited README.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

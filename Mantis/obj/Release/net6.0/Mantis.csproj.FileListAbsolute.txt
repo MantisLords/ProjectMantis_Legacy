@@ -1,0 +1,12 @@
+C:\Users\tlowe\Documents\Coding\CSharp\Mantis\Mantis\bin\Release\net6.0\Mantis.deps.json
+C:\Users\tlowe\Documents\Coding\CSharp\Mantis\Mantis\bin\Release\net6.0\Mantis.dll
+C:\Users\tlowe\Documents\Coding\CSharp\Mantis\Mantis\bin\Release\net6.0\Mantis.pdb
+C:\Users\tlowe\Documents\Coding\CSharp\Mantis\Mantis\obj\Release\net6.0\Mantis.csproj.AssemblyReference.cache
+C:\Users\tlowe\Documents\Coding\CSharp\Mantis\Mantis\obj\Release\net6.0\Mantis.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tlowe\Documents\Coding\CSharp\Mantis\Mantis\obj\Release\net6.0\Mantis.AssemblyInfoInputs.cache
+C:\Users\tlowe\Documents\Coding\CSharp\Mantis\Mantis\obj\Release\net6.0\Mantis.AssemblyInfo.cs
+C:\Users\tlowe\Documents\Coding\CSharp\Mantis\Mantis\obj\Release\net6.0\Mantis.csproj.CoreCompileInputs.cache
+C:\Users\tlowe\Documents\Coding\CSharp\Mantis\Mantis\obj\Release\net6.0\Mantis.dll
+C:\Users\tlowe\Documents\Coding\CSharp\Mantis\Mantis\obj\Release\net6.0\refint\Mantis.dll
+C:\Users\tlowe\Documents\Coding\CSharp\Mantis\Mantis\obj\Release\net6.0\Mantis.pdb
+C:\Users\tlowe\Documents\Coding\CSharp\Mantis\Mantis\obj\Release\net6.0\ref\Mantis.dll
