@@ -1,4 +1,4 @@
-﻿# Default ignored files
+# Default ignored files
 /shelf/
 /workspace.xml
 # Rider ignored files
@@ -6,7 +6,7 @@
 /contentModel.xml
 /.idea.Mantis.iml
 /projectSettingsUpdater.xml
-/.idea.Mantis/
+/.idea/.idea.Mantis/.idea/*
 /.idea.Mantis/.idea/workspace.xml
 # Editor-based HTTP Client requests
 /httpRequests/
@@ -14,5 +14,5 @@
 /dataSources/
 /dataSources.local.xml
 #bin
-bin/
-obj/
+/bin/
+/obj/

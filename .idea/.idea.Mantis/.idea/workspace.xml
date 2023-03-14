@@ -6,7 +6,8 @@
     <projectFile>MantisExamples/MantisExamples.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="656ca9fb-d6dd-4a4e-a656-aec09136223d" name="Changes" comment="Fixed .gitignore&#10;-Removed obj and bin folders from index">
+    <list default="true" id="656ca9fb-d6dd-4a4e-a656-aec09136223d" name="Changes" comment="Tried fix .gitignore v2">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mantis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mantis/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -147,7 +148,7 @@
       <workItem from="1678655352596" duration="1214000" />
       <workItem from="1678707072569" duration="1331000" />
       <workItem from="1678784513871" duration="7978000" />
-      <workItem from="1678796037258" duration="3597000" />
+      <workItem from="1678796037258" duration="4704000" />
     </task>
     <task id="LOCAL-00001" summary="Git ignor">
       <created>1678384873599</created>
@@ -198,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678799320830</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Tried fix .gitignore v2">
+      <created>1678800308186</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1678800308186</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,7 +236,8 @@
     <MESSAGE value="Basic Refactoring&#10;-Changed Printer corrections in y about one mm&#10;-Removed Generics from StraightSketch&#10;-Add Exp and Log to ErDouble.cs&#10;-Reworked SimpleExamples&#10;-Added Default Style for TableCreator.cs&#10;-Fixed bug with small DataErrorMarkGraphic&#10;-Fixed bug with labeling graph axis numbering format&#10;-Added small documentation to ErDouble.cs&#10;-Added README.md" />
     <MESSAGE value="-Edited README.md" />
     <MESSAGE value="Fixed .gitignore&#10;-Removed obj and bin folders from index" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed .gitignore&#10;-Removed obj and bin folders from index" />
+    <MESSAGE value="Tried fix .gitignore v2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tried fix .gitignore v2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
