@@ -6,8 +6,7 @@
 /contentModel.xml
 /.idea.Mantis.iml
 /projectSettingsUpdater.xml
-/.idea/.idea.Mantis/.idea/*
-/.idea.Mantis/.idea/workspace.xml
+/.idea/*
 # Editor-based HTTP Client requests
 /httpRequests/
 # Datasource local storage ignored files
