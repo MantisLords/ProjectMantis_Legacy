@@ -13,7 +13,7 @@ the git link: https://github.com/MantisLords/ProjectMantis.git
 
 ### Structure
 The main library is coded in the "Mantis" Solution. Do not touch
-it if you dont know what you are doing.
+it if you dont know what you are doing (unless you are ClebschGordon).
 
 Basic examples of how the library works are saved in the
 "MantisExample" - Solution
