@@ -25,7 +25,7 @@ public class Homework
          WheelData e = data[i];
          tableContent[i] = new string[] {e.freqQuotient.ToString("G4"), e.AmplitudeQuotient.ToString("G4")};
      }
-     CurrentTableCreator.AddTable("Hausaufhabe",
+     CurrentTableCreator.AddTable("Hausaufgabe",
          new string[]{ "w/w0 ", "A/A0" },
          tableContent,
          GlobalStyles.StandardTable,
