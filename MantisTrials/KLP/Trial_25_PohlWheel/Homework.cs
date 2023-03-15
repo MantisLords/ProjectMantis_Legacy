@@ -31,6 +31,12 @@ public class Homework
          GlobalStyles.StandardTable,
          1);
      CurrentTableCreator.MigraDoc.LastSection.AddParagraph();
+     SketchBook sketchBook = new SketchBook("Hausaufgabe");
+     var points = data.Select(e => new DataPoint(e.freqQuotient, e.AmplitudeQuotient)).ToList();
+     sketchBook.Add(new DataSetSketch(points));
+     GraphCreator graphcreator = new GraphCreator(CurrentDocument, sketchBook, LinearAxis.Auto("w/w0"),
+         LinearAxis.Auto("A/A0"), GraphOrientation.Landscape);
+
  }
 
  private static List<WheelData> InitializeData()
@@ -45,7 +51,15 @@ public class Homework
                  freqQuotient = sum
              }
          );
-         sum += 0.1;
+         if (sum >= 0.8 && sum <= 1.1)
+         {
+             sum += 0.02;
+         }
+         else
+         {
+            sum += 0.1; 
+         }
+         
      }
 
      return data;
