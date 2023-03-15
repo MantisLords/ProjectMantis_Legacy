@@ -22,7 +22,8 @@ public class Main_Trial_25_PohlWheel
         
         
         Homework.Generate();
-        //Part_1_ResonantFrequency.Generate();
+        Part_1_ResonantFrequency.Generate();
+        Part_2_DampingCoefficient.Generate();
         Part_3_ResonanceCurves.Generate();
         CurrentDocument.Save("KLP_Trail25_PohlWheel_Printout.pdf");
     }

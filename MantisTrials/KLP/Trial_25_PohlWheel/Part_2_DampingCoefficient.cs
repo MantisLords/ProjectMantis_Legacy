@@ -13,26 +13,22 @@ public class Part_2_DampingCoefficient
     private static MantisDocument CurrentDocument => Main_Trial_25_PohlWheel.CurrentDocument;
     private static TableCreator CurrentTableCreator => Main_Trial_25_PohlWheel.CurrentTableCreator;
 
-    private static void Generate()
+    public static void Generate()
     {
         double[,] rawData =
         {
-            // { 200,, },
-            // { 300,, },
-            // { 400,, },
-            // { 500,, }
+            { 200,, },
+            { 300,, },
+            { 400,, },
+            { 500,, }
         };
         List<ResData> resdata = InitializeData(rawData);
-        string[] tablecontent = new string[resdata.Count];
-        foreach (var e in resdata)
+        for (int i = 0; i < resdata.Count; i++)
         {
-            ErDouble a0 = e.A0;
-            ErDouble a1 = e.A1;
-            resdata.Add(new ResData()
-                {
-                    Delta = a0/a1
-                }
-            );
+           ResData e = resdata[i];
+           e.Delta = e.A0 / e.A1;
+
+           resdata[i] = e;
         }
 
         CurrentTableCreator.AddTable("Abklingkoeff",
@@ -44,7 +40,7 @@ public class Part_2_DampingCoefficient
         SketchBook sketchBook = new SketchBook("Bestimmung der Abklingkonstante");
         var points = resdata.Select(e => new DataPoint(e.Current, e.Delta)).ToList();
         sketchBook.Add(new DataSetSketch("Bestimmung der Abklingkonstante",points));
-        GraphCreator creator = new GraphCreator(CurrentDocument,sketchBook,LogAxis.Decade("x",1,0),LogAxis.Decade("y",2,0),
+        GraphCreator creator = new GraphCreator(CurrentDocument,sketchBook,LogAxis.Decade("x",1,2),LogAxis.Decade("y",2,-2),
             GraphOrientation.Portrait);
         
     }
