@@ -1,10 +1,10 @@
-﻿using Mantis.DocumentEngine;
+using Mantis.DocumentEngine;
 
 namespace Mantis;
 
 /// <summary>
 /// A datatype representing a value with error. It supports basic arithmetic +-*/Pow . It !only! calculates the correct
-/// error if in your formula the n
+/// error if in your formula the variable occurs once!
 /// </summary>
 public struct ErDouble
 {
@@ -51,16 +51,46 @@ public struct ErDouble
     public static ErDouble operator /(ErDouble a, ErDouble b)
         => new ErDouble(a.Value / b.Value, a.Value / b.Value * Math.Sqrt(a.RelErSq + b.RelErSq));
 
+    /// <summary>
+    /// Raises the ErDouble to the power of "power"
+    /// </summary>
     public ErDouble Pow(double power)
         => new ErDouble(Math.Pow(Value, power), Math.Pow(Value, power) * RelEr * power);
 
+    /// <summary>
+    /// Multiplies the ErDouble with 10^power
+    /// </summary>
     public ErDouble Mul10E(int power)
         => this * Math.Pow(10, power);
+
+
+    /// <summary>
+    /// Calculates e^exponent
+    /// </summary>
+    public static ErDouble Exp(ErDouble exponent)
+    {
+        ErDouble res = Math.Exp(exponent.Value);
+        res.Error = res.Value * exponent.Error;
+        return res;
+    }
+
+    /// <summary>
+    /// Returns the natural log of the "argument"
+    /// </summary>
+    public static ErDouble Log(ErDouble argument)
+    {
+        ErDouble res = Math.Log(argument.Value);
+        res.Error = argument.RelEr;
+        return res;
+    }
     
     public override string ToString()
     {
         double tmpValue = Value > 0 ? Value : -Value;
         int powerValue = (int) Math.Floor(Math.Log10(tmpValue));
+
+        if (powerValue is <= 2 and >= -2)
+            powerValue = 0;
 
         double formattedValue = tmpValue * Math.Pow(10, -powerValue);
         double formattedError = Error * Math.Pow(10, -powerValue);

@@ -15,6 +15,7 @@ public class SketchBookStyle
     //DataMarks
     public LineStyle DataMark;
     public LineStyle DataMarkErrorBounds;
+    public double DataMarkSize;
     
     //Title
     public TextStyle GraphTitle;

@@ -1,4 +1,6 @@
-﻿using MigraDoc.DocumentObjectModel;
+﻿using System.Collections.Generic;
+using System.Linq;
+using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 
 namespace Mantis.DocumentEngine.TableCreator;
@@ -10,7 +12,7 @@ public class TableCreator : FormattedPageCreator
         MigraDoc.AddSection();
     }
 
-    public void AddTable(string name, string[,] content, TableStyle style)
+    public void AddTableRaw(string tableName, string[,] content, TableStyle style)
     {
         MigraDoc.LastSection.AddParagraph();
         Table table = MigraDoc.LastSection.AddTable();
@@ -30,7 +32,7 @@ public class TableCreator : FormattedPageCreator
 
         Row nameRow = table.AddRow();
         nameRow.Cells[0].MergeRight = columnCount-1;
-        nameRow.Cells[0].AddParagraph(name);
+        nameRow.Cells[0].AddParagraph(tableName);
         nameRow.VerticalAlignment = VerticalAlignment.Center;
 
         for (int rowIndex = 0; rowIndex < rowCount; rowIndex++)
@@ -43,11 +45,13 @@ public class TableCreator : FormattedPageCreator
             }
         }
 
-       
-
+        table.KeepTogether = false;
     }
 
-    public void AddTable(string tablename, string[] headers, string[][] content, TableStyle style)
+    public void AddTable(string tableName, string[] headers, string[][] content)
+        => AddTable(tableName, headers, content, GlobalStyles.StandardTable);
+
+    public void AddTable(string tableName, string[] headers, string[][] content, TableStyle style)
     {
         string[,] completeContent = new string[content.Length + 1, headers.Length];
 
@@ -64,19 +68,17 @@ public class TableCreator : FormattedPageCreator
             }
         }
         
-        AddTable(tablename,completeContent,style);
+        AddTableRaw(tableName,completeContent,style);
     }
 
-    public void AddTable(string tablename, string[] headers, IEnumerable<string[]> content, TableStyle style,int times = 1)
+    public void AddTable(string tableName, string[] headers, IEnumerable<string[]> content, int times = 1)
+        => AddTable(tableName, headers, content, GlobalStyles.StandardTable, times);
+
+    public void AddTable(string tableName, string[] headers, IEnumerable<string[]> content, TableStyle style,int times = 1)
     {
         for (int i = 0; i < times; i++)
         {
-            AddTable(tablename,headers,content.ToArray(),style);
+            AddTable(tableName,headers,content.ToArray(),style);
         }
-    }
-
-    public void Print(string text)
-    {
-        MigraDoc.LastSection.AddParagraph(text);
     }
 }

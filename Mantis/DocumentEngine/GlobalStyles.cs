@@ -20,6 +20,7 @@ public static class GlobalStyles
 
         //DataMarks
         DataMark = new LineStyle(XColors.Black, 0.5),
+        DataMarkSize = 1,
         DataMarkErrorBounds = new LineStyle(XColors.Black, 0.5),
         
         //Title

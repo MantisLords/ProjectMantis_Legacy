@@ -2,14 +2,14 @@
 
 namespace Mantis.DocumentEngine;
 
-public class StraightSketch<T> : SketchCommand where T : FitFunction
+public class StraightSketch : SketchCommand 
 {
-    public StraightSketch(MinMaxFit<T> fit)
+    public StraightSketch(IMinMaxFit fit)
     {
         Fit = fit;
     }
 
-    private MinMaxFit<T> Fit { get; }
+    private IMinMaxFit Fit { get; }
 
     public override void Plot(LayoutManager layoutManager, Transform sketchRoot,SketchBookStyle style)
     {
@@ -24,14 +24,16 @@ public class StraightSketch<T> : SketchCommand where T : FitFunction
         }
 
         Transform straightTransform = new Transform(sketchRoot);
+
+        (FitFunction optimal, FitFunction min, FitFunction max) = Fit.GetOptimalMinMax();
         
-        PlotStraight(Fit.Optimal,layoutManager,sketchRoot,style);
-        PlotStraight(Fit.Min,layoutManager,sketchRoot,style);
-        PlotStraight(Fit.Max,layoutManager,sketchRoot,style);
+        PlotStraight(optimal,layoutManager,sketchRoot,style);
+        PlotStraight(min,layoutManager,sketchRoot,style);
+        PlotStraight(max,layoutManager,sketchRoot,style);
         
-        PlotReading(Fit.Optimal,layoutManager,sketchRoot,style);
-        PlotReading(Fit.Min,layoutManager,sketchRoot,style);
-        PlotReading(Fit.Max,layoutManager,sketchRoot,style);
+        PlotReading(optimal,layoutManager,sketchRoot,style);
+        PlotReading(min,layoutManager,sketchRoot,style);
+        PlotReading(max,layoutManager,sketchRoot,style);
     }
 
     private void PlotReading(FitFunction function, LayoutManager layoutManager, Transform root, SketchBookStyle style)
@@ -44,7 +46,7 @@ public class StraightSketch<T> : SketchCommand where T : FitFunction
             localPosition = Matrix3x3.Translate(layoutManager.UnitToMM(function.Reading.Value.P1)),
             Size = 0.5,
             Style = style.DataMark,
-            Type = DataMarkGraphic.MarkType.Circle
+            Type = DataMarkType.Circle
         });
         
         root.Add(new DataMarkGraphic()
@@ -52,7 +54,7 @@ public class StraightSketch<T> : SketchCommand where T : FitFunction
             localPosition = Matrix3x3.Translate(layoutManager.UnitToMM(function.Reading.Value.P2)),
             Size = 0.5,
             Style = style.DataMark,
-            Type = DataMarkGraphic.MarkType.Circle
+            Type = DataMarkType.Circle
         });
     }
 

@@ -1,4 +1,4 @@
-﻿using Mantis;
+using Mantis;
 using Mantis.DocumentEngine;
 using Mantis.DocumentEngine.TableCreator;
 using Mantis.Utility;
@@ -26,55 +26,37 @@ public static class Part_D_CopperWire
             {10.1025, 548},
             {9.948, 561},
             {9.9572, 578}
-        }; // m in g, l in mm
+        };
 
-        ErDouble defaultLength = new ErDouble(522,Main_Trail_23_Elasticity.L_ERROR); // mm
+        ErDouble defaultLength = new ErDouble(522,Main_Trail_23_Elasticity.L_ERROR);
         ErDouble wireCrossSection = new ErDouble(0.01, 0.002); // mm^2
 
         List<WireData> data = InitializeRawData(rawData);
 
-        data = data.Select((WireData e) => CalculateEpsilonSigma(e,defaultLength,wireCrossSection)).ToList();
+        data = data.Select(e => CalculateEpsilonSigma(e,defaultLength,wireCrossSection)).ToList();
         
         //Graph
         SketchBook sketchBook = new SketchBook("D Copper Wire");
 
         List<DataPoint> points = data.Select(e => new DataPoint(e.epsilon, e.sigma.Mul10E(-8))).ToList();
-        // List<DataPoint> points = new List<DataPoint>();
-        // foreach (WireData e in data)
-        // {
-        //     points.Add(new DataPoint(e.epsilon,e.epsilon.Mul10E(-8)));
-        // }
         sketchBook.Add(new DataSetSketch(points));
 
-        // List<DataPoint> pointsInLinear = (from e in data
-        //             where e.m.Value < 120
-        //             select new DataPoint(e.epsilon,e.sigma.Mul10E(-8))).ToList();
-        List<DataPoint> pointsInLinear = new List<DataPoint>();
-        foreach (WireData e in data)
-        {
-            if(e.m.Value < 120)
-                pointsInLinear.Add(new DataPoint(e.epsilon,e.sigma.Mul10E(-8)));
-        }
+        List<DataPoint> pointsInLinear = (from e in data
+                    where e.m.Value < 120
+                    select new DataPoint(e.epsilon,e.sigma.Mul10E(-8))).ToList();
         LinearMinMaxFit fit = new LinearMinMaxFit(pointsInLinear);
         fit.SetReading(0.5,true,2.125,true);
-        sketchBook.Add(new StraightSketch<LinearFunction>(fit));
+        sketchBook.Add(new StraightSketch(fit));
 
         GraphCreator creator = new GraphCreator(document: CurrentDocument,
             sketchBook: sketchBook,
             xAxis: LinearAxis.Auto("Epsilon"),
             yAxis: LinearAxis.Auto("Sigma / N/m^2 * 10^7"),
             orientation: GraphOrientation.Landscape);
-
-        string[][] tableContent = new string[data.Count][];
-        for (int i = 0; i < data.Count; i++)
-        {
-            WireData e = data[i];
-            tableContent[i] = new string[] { e.epsilon.ToString(), e.sigma.Mul10E(-8).ToString() };
-        }
         
-        CurrentTableCreator.AddTable(tablename:"Tab15: D Messdaten - Dehnung eines Kupferdrahts",
-            headers: new string[]{$"{GreekAlphabet.EPSILON}",$"{GreekAlphabet.SIGMA} / Pa * 10^8"},
-            content: tableContent, //data.Select(e => new string[]{e.epsilon.ToString(),e.sigma.Mul10E(-8).ToString()}).ToArray(),
+        CurrentTableCreator.AddTable(tableName:"Tab15: D Messdaten - Dehnung eines Kupferdrahts",
+            headers: new string[]{$"{GreekAlphabet.EPSILON}",$"{GreekAlphabet.SIGMA} / N/m^2 * 10^8"},
+            content:data.Select(e => new string[]{e.epsilon.ToString(),e.sigma.Mul10E(-8).ToString()}).ToArray(),
             style:GlobalStyles.StandardTable,
             times:2);
         
@@ -82,7 +64,7 @@ public static class Part_D_CopperWire
 
         ErDouble elasticity = fit.GetSlope().Mul10E(8);
         CurrentTableCreator.Print($"Elasticity: {elasticity.Mul10E(-5)} MPa");
-        
+
     }
 
     private static List<WireData> InitializeRawData(double[,] rawData)

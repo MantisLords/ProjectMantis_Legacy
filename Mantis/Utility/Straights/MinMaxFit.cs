@@ -3,7 +3,7 @@ using PdfSharp.Drawing;
 
 namespace Mantis.Utility;
 
-public abstract class MinMaxFit<T> : IMinMaxStraight where T : FitFunction
+public abstract class MinMaxFit<T> : IMinMaxFit where T : FitFunction
 {  public T Optimal { get; }
     public T Min { get; }
     public T Max { get; }
@@ -20,6 +20,11 @@ public abstract class MinMaxFit<T> : IMinMaxStraight where T : FitFunction
 
     protected abstract T FitOptimal(double[] x,double[] y);
     protected abstract T GetFromPoints(PointPair points);
+
+    public (FitFunction, FitFunction, FitFunction) GetOptimalMinMax()
+    {
+        return (Optimal, Min, Max);
+    }
 
     public ErDouble GetSlope()
     {
@@ -55,7 +60,7 @@ public abstract class MinMaxFit<T> : IMinMaxStraight where T : FitFunction
         res += $"ZeroValue: {GetZeroValue()}\n";
         return res;
     }
-    
+
     private (PointPair min,PointPair max) GetMinMaxPoints(IEnumerable<DataPoint> data)
     {
         DataPoint smallestX = GetMinDataPoint(data);
@@ -91,4 +96,7 @@ public abstract class MinMaxFit<T> : IMinMaxStraight where T : FitFunction
     }
 }
 
-public interface IMinMaxStraight{}
+public interface IMinMaxFit
+{
+    public (FitFunction, FitFunction, FitFunction) GetOptimalMinMax();
+}

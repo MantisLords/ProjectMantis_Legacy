@@ -14,7 +14,7 @@ public class DataMarkErrorGraphic : Graphic
     
     public override void Draw(Canvas canvas)
     {
-        if (Up > MinLength && Down > MinLength)
+        if (Up - Position.y > MinLength && Position.y - Down  > MinLength)
         {
             Vector2 upPos = new Vector2(Position.x,Up);
             Vector2 downPos = new Vector2(Position.x,Down);
@@ -24,7 +24,7 @@ public class DataMarkErrorGraphic : Graphic
             canvas.DrawLine(MP(downPos + Vector2.left * EndLength),MP(downPos + Vector2.right * EndLength),Style);
         }
         
-        if (Right > MinLength && Left > MinLength)
+        if (Right - Position.x > MinLength &&  Position.x - Left > MinLength)
         {
             Vector2 leftPos = new Vector2(Left,Position.y);
             Vector2 rightPos = new Vector2(Right,Position.y);

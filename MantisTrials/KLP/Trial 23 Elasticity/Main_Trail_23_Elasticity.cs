@@ -1,7 +1,6 @@
-﻿using System.Linq;
+using System.Linq;
 using Mantis.DocumentEngine;
 using Mantis.DocumentEngine.TableCreator;
-using MantisTrials.KLP.Trial_24_Pandulum;
 using MathNet.Numerics;
 using MathNet.Numerics.LinearRegression;
 
@@ -25,14 +24,12 @@ public static class Main_Trail_23_Elasticity
         CurrentDocument = new MantisDocument(MantisDocument.PrinterPhysicLibraryUniWue);
         CurrentTableCreator = new TableCreator(CurrentDocument);
         
-        // Part_A_ElasticityOfMaterial.GenerateAll();
-        // Part_B_ElasticityByProfile.GenerateAll();
-        // Part_C_L3Depedency.Generate();
-        // Part_D_CopperWire.Generate();
+        Part_A_ElasticityOfMaterial.GenerateAll();
+        Part_B_ElasticityByProfile.GenerateAll();
+        Part_C_L3Depedency.Generate();
+        Part_D_CopperWire.Generate();
         
-        Part_1_Stoppwatch.GenerateBoth();
-        
-        CurrentDocument.Save("KLP_Trail24_Pendulum_Printout.pdf");
+        CurrentDocument.Save("KLP_Trail23_Elasticity_Printout.pdf");
 
 
     }

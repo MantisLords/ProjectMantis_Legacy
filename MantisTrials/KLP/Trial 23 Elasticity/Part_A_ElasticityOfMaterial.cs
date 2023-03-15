@@ -1,4 +1,4 @@
-﻿using Mantis;
+using Mantis;
 using Mantis.DocumentEngine;
 using Mantis.DocumentEngine.TableCreator;
 using Mantis.Utility;
@@ -132,7 +132,7 @@ public static class Part_A_ElasticityOfMaterial
         //3.3: Add Fit to the graph
         LinearMinMaxFit fit = new LinearMinMaxFit(points);
         fit.SetReading(0.25,false,2,false);
-        sketchBook.Add(new StraightSketch<LinearFunction>(fit));
+        sketchBook.Add(new StraightSketch(fit));
 
 
         //3.4: Add the plot to the document
@@ -142,7 +142,7 @@ public static class Part_A_ElasticityOfMaterial
 
         
         //Fourth: Print Tables
-        CurrentTableCreator.AddTable(tablename:tableName,
+        CurrentTableCreator.AddTable(tableName:tableName,
             headers:new string[]{"F / N",$"{((char)0x0394)}s / mm"},
             content:data.Select(e => new string[]{e.F.ToString(),e.deltaS.ToString()}),
             style:GlobalStyles.StandardTable,
@@ -150,7 +150,7 @@ public static class Part_A_ElasticityOfMaterial
         
         //Prints the Read values and the slope of the fit
         CurrentTableCreator.Print(fit.ToString());
-        
+
         //Calculate the Elasticity
         ErDouble elasticity = rodLength.Mul10E(-3).Pow(3) / fit.GetSlope().Mul10E(-3) / 48.0 / geoMomentOfInertia;
         CurrentTableCreator.Print($"\nElasticity: {elasticity.Mul10E(-6)} MPa");

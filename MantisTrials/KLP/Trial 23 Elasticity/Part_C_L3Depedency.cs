@@ -1,4 +1,4 @@
-﻿using Mantis;
+using Mantis;
 using Mantis.DocumentEngine;
 using Mantis.DocumentEngine.TableCreator;
 using Mantis.Utility;
@@ -42,7 +42,7 @@ public static class Part_C_L3Depedency
         //Do Fit
         PolynomialMinMaxFit fit = new PolynomialMinMaxFit(points);
         fit.SetReading(1,true,8,true);
-        sketchBook.Add(new StraightSketch<PolynomialFunction>(fit));
+        sketchBook.Add(new StraightSketch(fit));
         
         //Do Layout
         GraphCreator creator = new GraphCreator(document: CurrentDocument,
@@ -53,7 +53,7 @@ public static class Part_C_L3Depedency
             size:new Vector2(190,190));
         
         //Do Table
-        CurrentTableCreator.AddTable(tablename:"Tab14: C l3 Abhängigkeit eines Stahlstabs mit Rohrprofil",
+        CurrentTableCreator.AddTable(tableName:"Tab14: C l3 Abhängigkeit eines Stahlstabs mit Rohrprofil",
             headers:new string[]{"l / mm",$"{GreekAlphabet.DELTA}s / mm"},
             content:data.Select(e => new string[]{e.l.ToString(),e.deltaS.ToString()}),
             style:GlobalStyles.StandardTable,
