@@ -17,10 +17,10 @@ public class Part_2_DampingCoefficient
     {
         double[,] rawData =
         {
-            { 200,, },
-            { 300,, },
-            { 400,, },
-            { 500,, }
+            // { 200,, },
+            // { 300,, },
+            // { 400,, },
+            // { 500,, }
         };
         List<ResData> resdata = InitializeData(rawData);
         string[] tablecontent = new string[resdata.Count];
@@ -30,7 +30,7 @@ public class Part_2_DampingCoefficient
             ErDouble a1 = e.A1;
             resdata.Add(new ResData()
                 {
-                    Delta = a0/a1;
+                    Delta = a0/a1
                 }
             );
         }
@@ -44,12 +44,12 @@ public class Part_2_DampingCoefficient
         SketchBook sketchBook = new SketchBook("Bestimmung der Abklingkonstante");
         var points = resdata.Select(e => new DataPoint(e.Current, e.Delta)).ToList();
         sketchBook.Add(new DataSetSketch("Bestimmung der Abklingkonstante",points));
-        GraphCreator creator = new GraphCreator(CurrentDocument,sketchBook,LogAxis.Decade(1),LogAxis.Decade(2),
+        GraphCreator creator = new GraphCreator(CurrentDocument,sketchBook,LogAxis.Decade("x",1,0),LogAxis.Decade("y",2,0),
             GraphOrientation.Portrait);
         
     }
     
-    public static List<ResData> InitializeData(double[,] rawData)
+    private static List<ResData> InitializeData(double[,] rawData)
     {
         List<ResData> data = new List<ResData>();
         for (int i = 0; i < rawData.GetLength(0); i++)

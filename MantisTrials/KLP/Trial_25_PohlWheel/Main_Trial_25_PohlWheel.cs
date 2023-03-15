@@ -11,6 +11,8 @@ public class Main_Trial_25_PohlWheel
     public const double ERROR_PERIODE = 0.01;//V
     public const double ERROR_AMPLITUE = 0.1;
     public const double CURRENT_ERROR = 0.01;
+    public const double VOLTAGE_ERROR = 0.1;
+    public const double FREQUENCY_ERROR = 0.1;
     
 
     public static void Process()
@@ -20,7 +22,8 @@ public class Main_Trial_25_PohlWheel
         
         
         Homework.Generate();
-        Part_1_ResonantFrequency.Generate();
+        //Part_1_ResonantFrequency.Generate();
+        Part_3_ResonanceCurves.Generate();
         CurrentDocument.Save("KLP_Trail25_PohlWheel_Printout.pdf");
     }
 }
