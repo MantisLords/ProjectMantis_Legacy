@@ -10,6 +10,7 @@ public class Main_Trial_25_PohlWheel
     public static TableCreator CurrentTableCreator { get; private set; }
     public const double ERROR_PERIODE = 0.01;//V
     public const double ERROR_AMPLITUE = 0.1;
+    public const double CURRENT_ERROR = 0.01;
     
 
     public static void Process()
