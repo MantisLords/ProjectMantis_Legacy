@@ -2,6 +2,7 @@
 using Mantis.DocumentEngine;
 using Mantis.DocumentEngine.TableCreator;
 using MantisTrials.KLP.Trial_23_Elasticity;
+using MathNet.Numerics.Statistics;
 
 namespace MantisTrials.KLP.Trial_24_Pandulum;
 
@@ -21,7 +22,7 @@ public class Part_2_Objective_Measurement
         //ErDouble meanElectro = CalculateMean(electroData, Device.Electro);
         CurrentTableCreator.Print($"meanLaser: {meanLaser} s");
         List<ObjectiveData> laserData = InitializeDatawithError(laser, Device.Laser);
-        ErDouble dummyV = Main_Trial_24_Pandulum.CalculateMean(laserData.Select(e => e.ObjLaser.Value), out double stDLaser);
+        double stDLaser = laserData.Select(e => e.ObjLaser.Value).StandardDeviation();
         CurrentTableCreator.Print($"Standard deviation {stDLaser} s");
         //CurrentTableCreator.Print($"meanElectro {meanElectro} s");
         //CurrentTableCreator.Print($"Standard deviation {meanElectro.Error * Math.Sqrt(electronic.Length)} s");
@@ -38,8 +39,7 @@ public class Part_2_Objective_Measurement
 
         List<ObjectiveData> laserData = InitializeDatawithError(laser, Device.Laser);
         //List<ObjectiveData> electroData = InitializeDatawithError(electronic, Device.Electro);
-        ErDouble meanLaser =
-            Main_Trial_24_Pandulum.CalculateMean(laserData.Select(e => e.ObjLaser.Value), out double stDLaser);
+        ErDouble meanLaser = laserData.Select(e => e.ObjLaser.Value).MeanWithError();
         return meanLaser;
     }
 
@@ -70,24 +70,7 @@ public class Part_2_Objective_Measurement
 
         return data;
     }
-
-    private static ErDouble CalculateMean(List<ObjectiveData> data,Device device)
-    {
-        ErDouble sum = new ErDouble(0, 0);
-        foreach (ObjectiveData e in data)
-        {
-            switch (device)
-            {
-                case Device.Laser: sum = sum + e.ObjLaser;
-                    break;
-                case Device.Electro: sum = sum + e.ObjElec;
-                    break;
-            }
-            
-        }
-
-        return sum / 10;
-    }
+    
     private struct ObjectiveData
     {
         public ErDouble ObjLaser;

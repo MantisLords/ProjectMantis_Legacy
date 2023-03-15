@@ -74,13 +74,13 @@ public class Part_4_Pendulum3
             Tabelle[i] = new string[] { e.angle.ToString(), e.quotient.ToString() };
         }
         
-        CurrentTableCreator.AddTable(tablename:"Messdaten Pendel 3",
+        CurrentTableCreator.AddTable(tableName:"Messdaten Pendel 3",
             headers: new string[]{"Phi","Quotient"},
             content: Tabelle, //data.Select(e => new string[]{e.epsilon.ToString(),e.sigma.Mul10E(-8).ToString()}).ToArray(),
             style:GlobalStyles.StandardTable,
             times:1);
         
-        CurrentTableCreator.AddTable(tablename:"Theoretischer Pendeldatan",
+        CurrentTableCreator.AddTable(tableName:"Theoretischer Pendeldatan",
             headers:new string[]{"Phi","Quotient","Iterationen"},
             content:theoDaten.Select(e => new string[]{e.angleTheo.ToString(),e.quotientTheo.ToString("G5"),e.iterations.ToString()}),
             style:GlobalStyles.StandardTable);

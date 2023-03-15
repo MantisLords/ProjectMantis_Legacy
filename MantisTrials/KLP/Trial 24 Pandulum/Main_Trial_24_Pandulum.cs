@@ -28,18 +28,4 @@ public static class Main_Trial_24_Pandulum
         Part_5_GravitationalAcceleration.Generate();
         CurrentDocument.Save("KLP_Trail24_Pendulum_Printout.pdf");
     }
-
-    public static ErDouble CalculateMean(IEnumerable<double> dataEn,out double standardDeviation)
-    {
-        List<double> data = dataEn.ToList();
-        double mean = data.Sum(e => e) / data.Count;
-
-        double deviation = Math.Sqrt(data.Sum(e => (e - mean) * (e - mean)) / data.Count);
-
-        standardDeviation = Math.Sqrt((double)data.Count / (data.Count - 1)) * deviation;
-
-        double standardError = standardDeviation / Math.Sqrt(data.Count);
-
-        return new ErDouble(mean, standardError);
-    }
 }

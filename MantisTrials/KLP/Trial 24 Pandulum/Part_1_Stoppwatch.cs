@@ -5,6 +5,7 @@ using Mantis;
 using Mantis.DocumentEngine;
 using Mantis.DocumentEngine.TableCreator;
 using MantisTrials.KLP.Trial_23_Elasticity;
+using MathNet.Numerics.Statistics;
 
 namespace MantisTrials.KLP.Trial_24_Pandulum;
 
@@ -30,16 +31,17 @@ public static class Part_1_Stoppwatch
         };// in s
         
         List<PendulumData> dataSalah = InitializeDataWithError(BrassOneSalah, BrassTenSalah, Name.Salah);
-       ErDouble meanOneSalah = Main_Trial_24_Pandulum.CalculateMean(dataSalah.Select(e => e.OneSalah.Value),out double stDSalahOne);
-       ErDouble meanTenSalah = Main_Trial_24_Pandulum.CalculateMean(dataSalah.Select(e => e.TenSalah.Value),out double stDSalahTen);
+        string statisticsOutSalahOne = dataSalah.Select(e => e.OneSalah.Value).StatisticalPropertiesToString();
+       string statisticsOutSalahTen = dataSalah.Select(e => e.TenSalah.Value).StatisticalPropertiesToString();
+       
        string[][] tableContentSalah = new string[dataSalah.Count][];
        for (int i = 0; i < dataSalah.Count; i++)
        {
            PendulumData e = dataSalah[i];
            tableContentSalah[i] = new string[] { e.OneSalah.ToString(), e.TenSalah.ToString() };
        }
-       CurrentTableCreator.Print($"Salahmittelwert {meanOneSalah } s, Standardabweichung {stDSalahOne} s");
-       CurrentTableCreator.Print($"Salahmittelwert10 {meanTenSalah} s, Standardabweichung {stDSalahTen} s");
+       CurrentTableCreator.Print($"Salah in s: {statisticsOutSalahOne }");
+       CurrentTableCreator.Print($"Salah10 in s {statisticsOutSalahTen}");
        CurrentTableCreator.AddTable("Messdaten Salah",
            new string[]{ "Eine Periode / s", "Zehn Perioden / s" },
            tableContentSalah,
@@ -60,8 +62,10 @@ public static class Part_1_Stoppwatch
         };// in s
 
         List<PendulumData> dataThomas = InitializeDataWithError(BrassOneThomas, BrassTenThomas, Name.Thomas);
-        ErDouble meanOneThomas = Main_Trial_24_Pandulum.CalculateMean(dataThomas.Select(e=>e.OneThomas.Value),out double stDThomasOne);
-        ErDouble meanTenThomas = Main_Trial_24_Pandulum.CalculateMean(dataThomas.Select(e => e.TenThomas.Value), out double stDThomasTen);
+
+        string statisticsOutOneThomas = dataThomas.Select(e => e.OneThomas.Value).StatisticalPropertiesToString();
+        string statisticsOutTenThomas = dataThomas.Select(e => e.TenThomas.Value).StatisticalPropertiesToString();
+        
         string[][] tableContentThomas = new string[dataThomas.Count][];
         for (int i = 0; i < dataThomas.Count; i++)
         {
@@ -71,8 +75,8 @@ public static class Part_1_Stoppwatch
 
         // tableContentThomas[dataThomas.Count ] = new string[] { meanOneThomas.ToString() };
         // tableContentThomas[dataThomas.Count + 1] = new string[] { meanTenThomas.ToString() };
-        CurrentTableCreator.Print($"Thomasmittelwert {meanOneThomas} s, Standardabwichung: {stDThomasOne} s");
-        CurrentTableCreator.Print($"Thomasmittelwert10 {meanTenThomas} s, Standardabweichung: {stDThomasTen} s");
+        CurrentTableCreator.Print($"Thomas in s: {statisticsOutOneThomas}");
+        CurrentTableCreator.Print($"Thomas10 in s: {statisticsOutTenThomas}");
         CurrentTableCreator.AddTable("Messdaten Thomas",
             new string[]{"Eine Periode / s", "Zehn Perioden / s"},
             tableContentThomas,
@@ -111,37 +115,7 @@ public static class Part_1_Stoppwatch
         return data;
     }
 
-    private static ErDouble CalculateMean(List<PendulumData> listdata, Name name, int numberOfOszilations)
-    {
-        ErDouble sum = new ErDouble(0, 0);
-        foreach (PendulumData e in listdata)
-        {
-            if (numberOfOszilations == 1)
-            {
-                switch (name)
-                {
-                    case Name.Salah: sum = sum + e.OneSalah;
-                        break;
-                    case Name.Thomas: sum = sum + e.OneThomas;
-                        break;
-                }
-            }
-            else
-            {
-                switch (name)
-                {
-                    case Name.Salah: sum = sum + e.TenSalah;
-                        break;
-                    case Name.Thomas: sum = sum + e.TenThomas;
-                        break;
-                } 
-            }
-        }
 
-        return sum / listdata.Count;
-    }
-    
-    
     private struct PendulumData
     {
         public ErDouble OneThomas;
