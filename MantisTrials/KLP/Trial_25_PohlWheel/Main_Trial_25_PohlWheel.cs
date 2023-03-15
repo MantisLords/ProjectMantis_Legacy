@@ -10,6 +10,7 @@ public class Main_Trial_25_PohlWheel
     public static TableCreator CurrentTableCreator { get; private set; }
     public const double ERROR_PERIODE = 0.01;//V
     public const double ERROR_AMPLITUE = 0.1;
+    
 
     public static void Process()
     {
@@ -18,6 +19,7 @@ public class Main_Trial_25_PohlWheel
         
         
         Homework.Generate();
+        Part_1_ResonantFrequency.Generate();
         CurrentDocument.Save("KLP_Trail25_PohlWheel_Printout.pdf");
     }
 }
