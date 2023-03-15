@@ -41,7 +41,7 @@ public class Homework
      {
          data.Add(new WheelData()
              {
-                 AmplitudeQuotient = 1/(Math.Sqrt(Math.Pow(1-Math.Pow(1-sum,2),2)+Math.Pow(2*sum*deltaQuotient,2))),
+                 AmplitudeQuotient = 1/(Math.Sqrt(Math.Pow(1-Math.Pow(sum,2),2)+Math.Pow(2*sum*deltaQuotient,2))),
                  freqQuotient = sum
              }
          );
