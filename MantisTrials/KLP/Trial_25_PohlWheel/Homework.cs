@@ -51,7 +51,7 @@ public class Homework
                  freqQuotient = sum
              }
          );
-         if (sum >= 0.8 && sum <= 1.1)
+         if (sum >= 0.8 && sum < 1.1)
          {
              sum += 0.02;
          }
