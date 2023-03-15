@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using Mantis;
+﻿using Mantis;
 using Mantis.DocumentEngine;
 using Mantis.DocumentEngine.TableCreator;
 
@@ -12,153 +11,129 @@ public class Part_4_Pendulum3
 
     public static void Generate()
     {
-        
-        double[,] messungen = new double[,]
+        double[,] messungen =
         {
-            {10,3.342},
-            {10,3.342},
-            {19,3.358},
-            {19,3.358},
-            {29,3.388},
-            {29,3.390},
-            {38,3.428},
-            {37,3.430},
-            {47,3.487},
-            {47,3.485},
-            {56,3.553},
-            {56,3.557},
-            {66,3.630},
-            {66,3.632},
-            {75,3.725},
-            {75,3.724},
-            {85,3.829},
-            {85,3.834},
-            {94,3.969},
-            {93,3.948},
-            {103,4.083},
-            {103,4.093},
-            {112,4.238},
-            {112,4.239},
-            {119,4.398},
-            {119,4.398},
-            {125,4.556},
-            {125,4.540}
-        };//gleich mit Auslenkwinkel nach Schwingung eingeben
-        List<Pendulumdata> messungDaten = InitiateDataWithError(messungen);
-        List<TheoPendulumData> theoDaten = GenerateTheoreticalTQuotient(130);
+            {10, 3.342},
+            {10, 3.342},
+            {19, 3.358},
+            {19, 3.358},
+            {29, 3.388},
+            {29, 3.390},
+            {38, 3.428},
+            {37, 3.430},
+            {47, 3.487},
+            {47, 3.485},
+            {56, 3.553},
+            {56, 3.557},
+            {66, 3.630},
+            {66, 3.632},
+            {75, 3.725},
+            {75, 3.724},
+            {85, 3.829},
+            {85, 3.834},
+            {94, 3.969},
+            {93, 3.948},
+            {103, 4.083},
+            {103, 4.093},
+            {112, 4.238},
+            {112, 4.239},
+            {119, 4.398},
+            {119, 4.398},
+            {125, 4.556},
+            {125, 4.540}
+        }; //gleich mit Auslenkwinkel nach Schwingung eingeben
+        var messungDaten = InitiateDataWithError(messungen);
+        var theoDaten = GenerateTheoreticalTQuotient(130);
 
-        messungDaten = messungDaten.Select(e => CalculateQuotient(e, new ErDouble(3.3335, Main_Trial_24_Pandulum.LASER_ERROR))).ToList();
-        
-        SketchBook sketchBook = new SketchBook("Pendulum 3");
-        List<DataPoint> points = new List<DataPoint>();
-        foreach (Pendulumdata e in messungDaten)
-        {
-            points.Add(new DataPoint(e.angle,e.quotient));
-        }
+        messungDaten = messungDaten
+            .Select(e => CalculateQuotient(e, new ErDouble(3.3335, Main_Trial_24_Pandulum.LASER_ERROR))).ToList();
+
+        var sketchBook = new SketchBook("Pendulum 3");
+        var points = new List<DataPoint>();
+        foreach (var e in messungDaten) points.Add(new DataPoint(e.angle, e.quotient));
         sketchBook.Add(new DataSetSketch(points));
-        List<DataPoint> theoPoints = new List<DataPoint>();
-        foreach (TheoPendulumData e in theoDaten)
-        {
-            points.Add(new DataPoint(e.angleTheo,e.quotientTheo));
-        }
-        GraphCreator creator = new GraphCreator(CurrentDocument,
+
+        var theoPoints = new List<DataPoint>();
+        foreach (var e in theoDaten) theoPoints.Add(new DataPoint(e.angleTheo, e.quotientTheo));
+        sketchBook.Add(new DataSetSketch(theoPoints));
+
+        var creator = new GraphCreator(CurrentDocument,
             sketchBook,
             LinearAxis.Auto("Phi"),
-            LinearAxis.Auto("quotient"),
-            GraphOrientation.Portrait);
-        
-        string[][] Tabelle = new string[messungDaten.Count][];
-        for (int i = 0; i < messungDaten.Count; i++)
+            LinearAxis.Auto("quotient"));
+
+        var Tabelle = new string[messungDaten.Count][];
+        for (var i = 0; i < messungDaten.Count; i++)
         {
-            Pendulumdata e = messungDaten[i];
-            Tabelle[i] = new string[] { e.angle.ToString(), e.quotient.ToString() };
+            var e = messungDaten[i];
+            Tabelle[i] = new[] {e.angle.ToString(), e.quotient.ToString()};
         }
-        
-        CurrentTableCreator.AddTable(tableName:"Messdaten Pendel 3",
-            headers: new string[]{"Phi","Quotient"},
-            content: Tabelle, //data.Select(e => new string[]{e.epsilon.ToString(),e.sigma.Mul10E(-8).ToString()}).ToArray(),
-            style:GlobalStyles.StandardTable,
-            times:1);
-        
-        CurrentTableCreator.AddTable(tableName:"Theoretischer Pendeldatan",
-            headers:new string[]{"Phi","Quotient","Iterationen"},
-            content:theoDaten.Select(e => new string[]{e.angleTheo.ToString(),e.quotientTheo.ToString("G5"),e.iterations.ToString()}),
-            style:GlobalStyles.StandardTable);
+
+        CurrentTableCreator.AddTable("Messdaten Pendel 3",
+            new[] {"Phi", "Quotient"},
+            Tabelle, //data.Select(e => new string[]{e.epsilon.ToString(),e.sigma.Mul10E(-8).ToString()}).ToArray(),
+            GlobalStyles.StandardTable,
+            1);
+
+        CurrentTableCreator.AddTable("Theoretischer Pendeldatan",
+            new[] {"Phi", "Quotient", "Iterationen"},
+            theoDaten.Select(
+                e => new[] {e.angleTheo.ToString(), e.quotientTheo.ToString("G5"), e.iterations.ToString()}),
+            GlobalStyles.StandardTable);
         CurrentTableCreator.MigraDoc.LastSection.AddParagraph();
-    } 
+    }
+
     private static Pendulumdata CalculateQuotient(Pendulumdata listdata, ErDouble T0)
     {
-        listdata.quotient = (listdata.period)/ T0 - 1;
+        listdata.quotient = listdata.period / T0 - 1;
         return listdata;
     }
+
     private static List<Pendulumdata> InitiateDataWithError(double[,] rawData)
     {
-        List<Pendulumdata> data = new List<Pendulumdata>();
-        for (int i = 0; i < rawData.GetLength(0); i+=2)
-        {
-            if(i<rawData.GetLength(0)-1)
-            {
-                data.Add(new Pendulumdata()
+        var data = new List<Pendulumdata>();
+        for (var i = 0; i < rawData.GetLength(0); i += 2)
+            if (i < rawData.GetLength(0) - 1)
+                data.Add(new Pendulumdata
                 {
-                    angle = new ErDouble(rawData[i, 0], Main_Trial_24_Pandulum.ANGLE_READING_ERROR_SWINGING), 
-                                                  
-                    period = new ErDouble((rawData[i, 1]+rawData[i+1,1])/2, 7.1 * Math.Pow(10, -4))
-                }); 
-            }
-                   
-        }
+                    angle = new ErDouble(rawData[i, 0], Main_Trial_24_Pandulum.ANGLE_READING_ERROR_SWINGING),
+
+                    period = new ErDouble((rawData[i, 1] + rawData[i + 1, 1]) / 2, 7.1 * Math.Pow(10, -4))
+                });
 
         return data;
     }
 
-
-    private struct Pendulumdata
-         {
-             public ErDouble angle;
-             public ErDouble period;
-             public ErDouble quotient;
-         }
-
-    public struct TheoPendulumData
-    {
-        public double quotientTheo;
-        public double angleTheo;
-        public int iterations;
-    }
-
     public static List<TheoPendulumData> GenerateTheoreticalTQuotient(int maxPhi)
     {
-        (decimal T0,int it) = CalculateT(0, 0.01m);
+        (var T0, var it) = CalculateT(0, 0.01m);
 
-        List<TheoPendulumData> values = new List<TheoPendulumData>();
-        
-        for (int phiGrad = 0; phiGrad <= maxPhi; phiGrad+=5)
+        var values = new List<TheoPendulumData>();
+
+        for (var phiGrad = 0; phiGrad <= maxPhi; phiGrad += 5)
         {
-            decimal phi = (decimal)(Math.PI * phiGrad / 180.0);
-            (decimal T,int iterations) = CalculateT(phi, 0.0000000001m);
+            var phi = (decimal) (Math.PI * phiGrad / 180.0);
+            (var T, var iterations) = CalculateT(phi, 0.0000000001m);
 
-            decimal Q = T / T0 - 1;
-            
-            values.Add(new TheoPendulumData{quotientTheo = (double)Q,angleTheo = phiGrad,iterations = iterations});
+            var Q = T / T0 - 1;
+
+            values.Add(new TheoPendulumData {quotientTheo = (double) Q, angleTheo = phiGrad, iterations = iterations});
         }
 
         return values;
     }
 
-    private static (decimal,int) CalculateT(decimal phi, decimal precision)
+    private static (decimal, int) CalculateT(decimal phi, decimal precision)
     {
         decimal series = 0;
-        int iterations = 0;
+        var iterations = 0;
 
-        decimal sin = (decimal)Math.Sin((double)phi / 2);
+        var sin = (decimal) Math.Sin((double) phi / 2);
 
-        for (int i = 0; i < 1000; i++)
+        for (var i = 0; i < 1000; i++)
         {
-            decimal res = 1.0m;
-            for (int j = 1; j < 2*i; j+=2)
-            {
-                res *= ((decimal)j) / ((decimal)j + 1) * sin;
-            }
+            var res = 1.0m;
+            for (var j = 1; j < 2 * i; j += 2) res *= j / ((decimal) j + 1) * sin;
 
             res = res * res;
             if (res < precision)
@@ -172,5 +147,19 @@ public class Part_4_Pendulum3
 
         return (series, iterations);
     }
-    
+
+
+    private struct Pendulumdata
+    {
+        public ErDouble angle;
+        public ErDouble period;
+        public ErDouble quotient;
+    }
+
+    public struct TheoPendulumData
+    {
+        public double quotientTheo;
+        public double angleTheo;
+        public int iterations;
+    }
 }

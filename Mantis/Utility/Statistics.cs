@@ -1,5 +1,4 @@
-﻿using System.Reflection.Metadata;
-using MathNet.Numerics.Statistics;
+﻿using MathNet.Numerics.Statistics;
 
 namespace Mantis;
 
@@ -17,7 +16,8 @@ public static class Statistics
 
     public static string StatisticalPropertiesToString(this IEnumerable<double> source)
     {
-        return $"Properties of data:\n Mean:{source.Mean().ToString("G4")}\n Standard Deviation: {source.StandardDeviation().ToString("G4")}\n" +
+        return
+            $"Mean:{source.Mean().ToString("G4")}\nStandard Deviation: {source.StandardDeviation().ToString("G4")}\n" +
             $"Error of the mean: {source.StandardErrorMean().ToString("G4")}";
     }
 }
