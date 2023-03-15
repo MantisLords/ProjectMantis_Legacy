@@ -3,6 +3,7 @@ using System.Diagnostics;
 using Mantis;
 using Mantis.DocumentEngine;
 using Mantis.DocumentEngine.TableCreator;
+using Mantis.Utility;
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 
@@ -17,16 +18,16 @@ public class Part_2_DampingCoefficient
     {
         double[,] rawData =
         {
-            { 200,, },
-            { 300,, },
-            { 400,, },
-            { 500,, }
+            {200,-3.653,-3.288 },
+            { 300,3.100,2.500 },
+            { 400,-2.316, -1.724},
+            { 500,-1.750,-1.050 }
         };
         List<ResData> resdata = InitializeData(rawData);
         for (int i = 0; i < resdata.Count; i++)
         {
            ResData e = resdata[i];
-           e.Delta = e.A0 / e.A1;
+           e.Delta = new ErDouble(Math.Log(e.A0.Value / e.A1.Value, Math.E) / 1.902, 0.005);
 
            resdata[i] = e;
         }
@@ -40,8 +41,13 @@ public class Part_2_DampingCoefficient
         SketchBook sketchBook = new SketchBook("Bestimmung der Abklingkonstante");
         var points = resdata.Select(e => new DataPoint(e.Current, e.Delta)).ToList();
         sketchBook.Add(new DataSetSketch("Bestimmung der Abklingkonstante",points));
+        PolynomialMinMaxFit fit = new PolynomialMinMaxFit(points);
+        fit.SetReading(2,true,8,true);
+        sketchBook.Add(new StraightSketch(fit));
         GraphCreator creator = new GraphCreator(CurrentDocument,sketchBook,LogAxis.Decade("x",1,2),LogAxis.Decade("y",2,-2),
             GraphOrientation.Portrait);
+        CurrentTableCreator.Print(fit.ToString());
+        
         
     }
     
