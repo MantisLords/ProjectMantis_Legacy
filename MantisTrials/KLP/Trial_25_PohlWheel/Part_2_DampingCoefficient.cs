@@ -18,22 +18,15 @@ public class Part_2_DampingCoefficient
     {
         double[,] rawData =
         {
-            {200,-3.653,-3.288 },
-            { 300,3.100,2.500 },
-            { 400,-2.316, -1.724},
-            { 500,-1.750,-1.050 }
-        };
+            {200,0.0614,0.0003},
+            {296,0.100,0.00053},
+            {399,0.156,0.00082},
+            {500,0.239,0.0017}
+        };//Frequenz in Hz, Dämpfungskoeff , Fehler des Dämpfungskoeffizienten aus der Software
         List<ResData> resdata = InitializeData(rawData);
-        for (int i = 0; i < resdata.Count; i++)
-        {
-           ResData e = resdata[i];
-           e.Delta = new ErDouble(Math.Log(e.A0.Value / e.A1.Value, Math.E) / 1.902, 0.005);
-
-           resdata[i] = e;
-        }
-
+        
         CurrentTableCreator.AddTable("Abklingkoeff",
-            new string[] { "Stromstaekre", "abklingconst" },
+            new string[] { "Stromstärke / mA", "Abklingconst" },
             resdata.Select(e => new string[] { e.Current.ToString(), e.Delta.ToString() }),
             GlobalStyles.StandardTable,
             1
@@ -42,11 +35,12 @@ public class Part_2_DampingCoefficient
         var points = resdata.Select(e => new DataPoint(e.Current, e.Delta)).ToList();
         sketchBook.Add(new DataSetSketch("Bestimmung der Abklingkonstante",points));
         PolynomialMinMaxFit fit = new PolynomialMinMaxFit(points);
-        fit.SetReading(2,true,8,true);
+        fit.SetReading(800,false,0.03,true);
         sketchBook.Add(new StraightSketch(fit));
         GraphCreator creator = new GraphCreator(CurrentDocument,sketchBook,LogAxis.Decade("x",1,2),LogAxis.Decade("y",2,-2),
             GraphOrientation.Portrait);
         CurrentTableCreator.Print(fit.ToString());
+        CurrentTableCreator.AddPageBreak();
         
         
     }
@@ -59,8 +53,7 @@ public class Part_2_DampingCoefficient
             data.Add(new ResData()
                 {
                     Current = new ErDouble(rawData[i,0],Main_Trial_25_PohlWheel.CURRENT_ERROR),
-                    A0= new ErDouble(rawData[i,1],Main_Trial_25_PohlWheel.ERROR_AMPLITUE),
-                    A1= new ErDouble(rawData[i,2], Main_Trial_25_PohlWheel.ERROR_AMPLITUE),
+                    Delta = new ErDouble(rawData[i,1],rawData[i,1]*0.05)
                 }
             );
         }
@@ -71,8 +64,6 @@ public class Part_2_DampingCoefficient
     public struct ResData
     {
         public ErDouble Current;
-        public ErDouble A0;
-        public ErDouble A1;
         public ErDouble Delta;
     }
 
