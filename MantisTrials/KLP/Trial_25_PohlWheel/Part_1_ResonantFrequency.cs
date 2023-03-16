@@ -15,12 +15,16 @@ public class Part_1_ResonantFrequency
     {
         double[,] datenfuerEigenfrequenz = new double[,]
         {
-            {6.942,1.902},
-            {6.467,1.905},
-            {6.144,1.900},
-            {3.764,1.900},
-            {0.843,1.900},
-            {0.313,1.950}
+            {20.0,1.862},
+            {18.0,1.865},
+            {16.0,1.868},
+            {14.0,1.874},
+            {12.0,1.880},
+            {10.0,1.883},
+            {8.0,1.887},
+            {6.0,1.888},
+            {4.0,1.891},
+            {2.0,1.871}
         };//in V und in s
         
         List<PeriodenDaten> daten = InitializeData(datenfuerEigenfrequenz);

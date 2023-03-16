@@ -69,7 +69,7 @@ public class LinearAxis : AxisKernel
     {
         int smallestPower = (int) Math.Floor(Math.Log10(minValuePerMM));
 
-        double[] allowedScalings = {10,5,2.5,2,1.25};
+        double[] allowedScalings = {10,5,2.5,2,1.25,30,3,40,4,50};
         
         double smallestScale = Math.Pow(10, smallestPower);
         double bestScale = smallestScale * 10;

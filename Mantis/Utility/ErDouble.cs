@@ -86,6 +86,9 @@ public struct ErDouble
     
     public override string ToString()
     {
+        if (Math.Abs(Error) <= double.Epsilon)
+            return $"{Value.ToString("G5")}";
+        
         double tmpValue = Value > 0 ? Value : -Value;
         int powerValue = (int) Math.Floor(Math.Log10(tmpValue));
 

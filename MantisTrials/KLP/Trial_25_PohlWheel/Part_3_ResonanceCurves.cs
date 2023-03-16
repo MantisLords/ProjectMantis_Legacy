@@ -1,15 +1,16 @@
 using Mantis;
 using Mantis.DocumentEngine;
 using Mantis.DocumentEngine.TableCreator;
+using MigraDoc.DocumentObjectModel;
 
 namespace MantisTrials.KLP.Trial_25_PohlWheel;
 
 public static class Part_3_ResonanceCurves
 {
-    public static ErDouble T0 = new(1.902);
+    public static ErDouble T0 = new(1.877,0.003261);
     public static ErDouble W0 = 2 * Math.PI / T0;
-    public static ErDouble A0 = new(0.054, 0.001);
-    public static ErDouble delta4 = new ErDouble(0.157, 0.016);
+    public static ErDouble A0 = new ErDouble(0.0638,0.00031);
+    public static ErDouble delta4 = new ErDouble(0.1560, 0.0078);
     public static ErDouble deltaQuotient = delta4 / W0;
     private static MantisDocument CurrentDocument => Main_Trial_25_PohlWheel.CurrentDocument;
     private static TableCreator currentTableCreator => Main_Trial_25_PohlWheel.CurrentTableCreator;
@@ -18,28 +19,46 @@ public static class Part_3_ResonanceCurves
     {
         double[,] daten200mA =
         {
-            { 102, -0.108, -0.292 },
-            { 149, -0.071, -0.331 },
-            { 180, 0.060, -0.463 },
-            { 193, 0.355, -0.759 },
-            { 202, 1.050, -1.463 },
-            { 206, 1.036, -1.405 },
-            { 212, 1.114, -1.529 },
-            { 219, 0.437, -0.826 },
-            { 238, -0.023, -0.391 },
-            { 285, -0.105, -0.310 }
-        }; // frequenz (Hz), A+ (V) ,A- (V)
+            {43,0.0725,1.45,1.84+Math.PI},
+            {86,0.0999,-3.40+Math.PI,3.29},
+            {129,0.117,4.86,2.15},
+            {174,0.212,-1.97+Math.PI,1.57+Math.PI},
+            {193,0.418,4.54,1.84},
+            {198,0.569,0.833,4.41},
+            {202,0.784,2.39,-3.37+Math.PI},
+            {206,1.07,8.15+Math.PI,5.65+Math.PI},
+            {211,2.22,1.02,2.02+Math.PI},
+            {215,2.62,0.0795,1.99+Math.PI},
+            {219,0.932,0.379,-3.35+Math.PI},
+            {223,0.594,4.37,3.85},
+            {227,0.439,2.65,2.17},
+            {232,0.342,4.23,3.81},
+            {236,0.289,2.88,2.47},
+            {258,0.154,1.22,0.882},
+            {301,0.0759,1.03,0.749},
+            {344,0.0507,7.68+Math.PI,1.16+Math.PI}
+        }; // frequenz (Hz), A in V , Phi1, Phi2
 
         double[,] daten400mA =
         {
-            {46,-0.144,-0.267},
-            {98,-0.117,-0.283},
-            {159,-0.073,-0.331},
-            {187,0.061,-0.458},
-            {201,0.187,-0.594},
-            {210,0.262,-0.652},
-            {234,0.012,-0.437},
-            {274,-0.108,-0.292}
+            {44,0.0719,4.26,1.52},
+            {86,0.100,4.41,1.72},
+            {133,0.118,2.93,-2.88+Math.PI},
+            {173,0.198,2.91,-2.83+Math.PI},
+            {194,0.356,0.290,0.987+Math.PI},
+            {198,0.432,0.597,-1.75},
+            {202,0.523,1.25,-0.992},
+            {206,0.634,0.174,1.290+Math.PI},
+            {211,0.725,4.66,3.02},
+            {215,0.667,10.1+Math.PI,-0.615},
+            {219,0.540,8.54+Math.PI,4.35},
+            {223,0.446,-1.01,-1.24+Math.PI+Math.PI},
+            {227,0.360,4.28,3.50},
+            {231,0.301,1.72,1.04},
+            {236,0.256,2.24,1.61},
+            {258,0.146,2.89,2.43},
+            {302,0.0734,2.39,2.06},
+            {344,0.0507,-1.50,-4.90+Math.PI}
             
         }; //frequenz (Hz), A+ (V), A- (V)
 
@@ -48,7 +67,7 @@ public static class Part_3_ResonanceCurves
         var resDaten400mA = InitializeData(daten400mA);
         SketchBook sketchBook = new SketchBook("Resonanzkurve bei 200mA");
         PleaseEndThisAgony(resDaten200mA,"200", sketchBook);
-        List<WheelData> data = InitializeDataH();
+        List<WheelData> data = InitializeDataHomework();
         SketchBook sketchBook2 = new SketchBook("Resonanzkurve bei 400mA");
         var points = data.Select(e => new DataPoint(e.freqQuotient, e.AmplitudeQuotient)).ToList();
         sketchBook2.Add(new DataSetSketch("bei 400mA",points));
@@ -61,40 +80,47 @@ public static class Part_3_ResonanceCurves
         for (var i = 0; i < daten.Count; i++)
         {
             var e = daten[i];
-
-
+            
             e.W = 2 * Math.PI * e.Frequenz / 400;
-            e.A = (e.Aplus - e.Aminus) / 2;
             e.WQuotient = e.W / W0;
             e.AQuotient = e.A / A0;
             daten[i] = e;
         }
 
+        TableStyle smallTable = GlobalStyles.StandardTable;
+        smallTable.ColumnWidth = Unit.FromCentimeter(4);
+
         currentTableCreator.AddTable($"Resonanz bei {strom}mA - Teil 1",
             new[]
             {
-                "Frequenz", "w", "w/w0", "A+"
+                "Frequenz / Hz", "w / s^-1", "w/w0",
             },
             daten.Select(e => new[]
             {
-                e.Frequenz.ToString(), e.W.ToString(), e.WQuotient.ToString(), e.Aplus.ToString()
+                e.Frequenz.ToString(), e.W.ToString(), e.WQuotient.ToString(),
             }),
-            GlobalStyles.StandardTable);
+            smallTable);
 
-        //currentTableCreator.AddPageBreak();
+        currentTableCreator.AddPageBreak();
         currentTableCreator.AddTable($"Resonanz bei {strom}mA - Teil 2",
-    new string[]{"A-", "A", "A/A0"},
-    daten.Select(e => new string[] {e.Aminus.ToString(), e.A.ToString(), e.AQuotient.ToString()}),
-    GlobalStyles.StandardTable);
+    new string[]{"Phasenvershiebung" ,"A / mA", "A/A0"},
+    daten.Select(e => new string[] {e.PhaseDifference.ToString(),e.A.ToString(), e.AQuotient.ToString()}),
+    smallTable);
+        currentTableCreator.AddPageBreak();
         List<DataPoint> points = daten.Select(e => new DataPoint(e.WQuotient, e.AQuotient)).ToList();
     sketchBook.Add(new DataSetSketch($"Resonanzkurve bei {strom}mA", points));
 
     GraphCreator creator = new GraphCreator(CurrentDocument, sketchBook, LinearAxis.Auto("w/w0"),
         LinearAxis.Auto("A/A0"),
         GraphOrientation.Landscape);
+    SketchBook meinSketchBook = new SketchBook("Phasenverschiebung");
+    List<DataPoint> phasendiffPunkte = daten.Select(e => new DataPoint(e.WQuotient, e.PhaseDifference)).ToList();
+    meinSketchBook.Add(new DataSetSketch("Phasenverschiebung", phasendiffPunkte));
+    GraphCreator meinCreator = new GraphCreator(CurrentDocument, meinSketchBook, LinearAxis.Auto("w/w0"),
+        LinearAxis.Auto("Phi / rad"), GraphOrientation.Landscape);
     }
 
-    public static List<WheelData> InitializeDataH()
+    public static List<WheelData> InitializeDataHomework()
     {
         List<WheelData> data = new List<WheelData>();
         double sum = 0;
@@ -123,15 +149,27 @@ public static class Part_3_ResonanceCurves
     {
         var data = new List<ResDaten>();
         for (var i = 0; i < rawData.GetLength(0); i++)
+        {
+            double phaseDif = - Mod2PI(rawData[i, 2]) + Mod2PI(rawData[i, 3]);
+            if (phaseDif < 0)
+                phaseDif += 2 * Math.PI;
+            phaseDif -= Math.PI;
             data.Add(new ResDaten
                 {
                     Frequenz = new ErDouble(rawData[i, 0], Main_Trial_25_PohlWheel.FREQUENCY_ERROR),
-                    Aplus = new ErDouble(rawData[i, 1], Main_Trial_25_PohlWheel.VOLTAGE_ERROR),
-                    Aminus = new ErDouble(rawData[i, 2], Main_Trial_25_PohlWheel.VOLTAGE_ERROR)
+                    A = new ErDouble(rawData[i, 1], rawData[i, 1] * 0.05 + 0.001),
+                    PhaseDifference = phaseDif
+
                 }
             );
+        }
 
         return data;
+    }
+
+    private static double Mod2PI(double value)
+    {
+        return value - Math.Floor((value + 20 * Math.PI) / 2 / Math.PI) * 2 * Math.PI;
     }
 
     public struct ResDaten
@@ -139,10 +177,9 @@ public static class Part_3_ResonanceCurves
         public ErDouble Frequenz;
         public ErDouble W;
         public ErDouble WQuotient;
-        public ErDouble Aplus;
-        public ErDouble Aminus;
         public ErDouble A;
         public ErDouble AQuotient;
+        public ErDouble PhaseDifference;
     }
     public struct WheelData
     {
