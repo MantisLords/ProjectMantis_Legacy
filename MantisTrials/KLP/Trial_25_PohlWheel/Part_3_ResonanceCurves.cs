@@ -1,6 +1,7 @@
 using Mantis;
 using Mantis.DocumentEngine;
 using Mantis.DocumentEngine.TableCreator;
+using Microsoft.VisualBasic;
 using MigraDoc.DocumentObjectModel;
 
 namespace MantisTrials.KLP.Trial_25_PohlWheel;
@@ -9,7 +10,7 @@ public static class Part_3_ResonanceCurves
 {
     public static ErDouble T0 = new(1.877,0.003261);
     public static ErDouble W0 = 2 * Math.PI / T0;
-    public static ErDouble A0 = new ErDouble(0.0638,0.00031);
+    public static ErDouble A0 = new ErDouble(0.0638,0.00131);
     public static ErDouble delta4 = new ErDouble(0.1560, 0.0078);
     public static ErDouble deltaQuotient = delta4 / W0;
     private static MantisDocument CurrentDocument => Main_Trial_25_PohlWheel.CurrentDocument;
@@ -75,6 +76,11 @@ public static class Part_3_ResonanceCurves
         SketchBook sketchBook2 = new SketchBook("Resonanzkurve bei 400mA");
         var points = data.Select(e => new DataPoint(e.freqQuotient, e.AmplitudeQuotient)).ToList();
         sketchBook2.Add(new DataSetSketch("bei 400mA",points));
+        
+        currentTableCreator.AddTable("Theoretische Werte für I = 400mA",
+            headers:new string[]{"w/w0","A/A0"},
+            content:data.Select(e => new string[]{e.freqQuotient.ToString("G4"),e.AmplitudeQuotient.ToString("G4")}));
+        
         PleaseEndThisAgony(resDaten400mA,"400",sketchBook2);
 
     }
@@ -117,11 +123,35 @@ public static class Part_3_ResonanceCurves
     GraphCreator creator = new GraphCreator(CurrentDocument, sketchBook, LinearAxis.Auto("w/w0"),
         LinearAxis.Auto("A/A0"),
         GraphOrientation.Landscape);
+    
     SketchBook meinSketchBook = new SketchBook("Phasenverschiebung");
     List<DataPoint> phasendiffPunkte = daten.Select(e => new DataPoint(e.WQuotient, e.PhaseDifference)).ToList();
     meinSketchBook.Add(new DataSetSketch("Phasenverschiebung", phasendiffPunkte));
     GraphCreator meinCreator = new GraphCreator(CurrentDocument, meinSketchBook, LinearAxis.Auto("w/w0"),
         LinearAxis.Auto("Phi / rad"), GraphOrientation.Landscape);
+    
+    //max
+    ErDouble maxAQutient = Max(daten, e => e.AQuotient.Value).AQuotient;
+    ErDouble deltaCalc = W0 / maxAQutient / 2;
+    currentTableCreator.Print($"Max A/A0: {maxAQutient} Resulting Dampening {deltaCalc}");
+
+    }
+
+    private static T Max<T>(List<T> source,Func<T,double> selector)
+    {
+        T maxEl = default(T);
+        double maxValue = Double.NegativeInfinity;
+
+        foreach (T e in source)
+        {
+            if (selector.Invoke(e) > maxValue)
+            {
+                maxValue = selector(e);
+                maxEl = e;
+            }
+        }
+
+        return maxEl;
     }
 
     public static List<WheelData> InitializeDataHomework()
