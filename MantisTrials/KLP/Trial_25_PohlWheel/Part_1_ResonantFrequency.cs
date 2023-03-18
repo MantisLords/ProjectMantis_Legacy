@@ -30,6 +30,8 @@ public class Part_1_ResonantFrequency
         List<PeriodenDaten> daten = InitializeData(datenfuerEigenfrequenz);
         List<double> peridoden = daten.Select(e => e.periode.Value).ToList();
         CurrentTableCreator.Print(peridoden.StatisticalPropertiesToString());
+        ErDouble frequency = 2 * Math.PI / peridoden.MeanWithError();
+        CurrentTableCreator.Print($"Frequency: {frequency}");
     }
 
     public static List<PeriodenDaten> InitializeData(double[,] rawData)

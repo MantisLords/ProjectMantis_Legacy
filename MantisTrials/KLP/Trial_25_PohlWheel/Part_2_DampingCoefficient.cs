@@ -37,8 +37,10 @@ public class Part_2_DampingCoefficient
         PolynomialMinMaxFit fit = new PolynomialMinMaxFit(points);
         fit.SetReading(800,false,0.03,true);
         sketchBook.Add(new StraightSketch(fit));
-        GraphCreator creator = new GraphCreator(CurrentDocument,sketchBook,LogAxis.Decade("x",1,2),LogAxis.Decade("y",2,-2),
-            GraphOrientation.Portrait);
+        GraphCreator creator = new GraphCreator(
+            CurrentDocument,sketchBook,LogAxis.Decade("x",1,2),LogAxis.Decade("y",2,-2),
+            
+            new Vector2(50,25),new Vector2(126.5,254));
         CurrentTableCreator.Print(fit.ToString());
         CurrentTableCreator.AddPageBreak();
         

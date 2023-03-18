@@ -68,6 +68,10 @@ public static class Part_3_ResonanceCurves
         SketchBook sketchBook = new SketchBook("Resonanzkurve bei 200mA");
         PleaseEndThisAgony(resDaten200mA,"200", sketchBook);
         List<WheelData> data = InitializeDataHomework();
+        currentTableCreator.AddTable("Theoretische Daten fuer delta",
+            new []{"w/w0", "A/A0"},
+            data.Select(e=>new string[]{e.freqQuotient.ToString("G4"),e.AmplitudeQuotient.ToString("G4")}),
+            GlobalStyles.StandardTable,1);
         SketchBook sketchBook2 = new SketchBook("Resonanzkurve bei 400mA");
         var points = data.Select(e => new DataPoint(e.freqQuotient, e.AmplitudeQuotient)).ToList();
         sketchBook2.Add(new DataSetSketch("bei 400mA",points));
