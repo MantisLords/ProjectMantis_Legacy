@@ -88,6 +88,11 @@ public struct ErDouble
     {
         if (Math.Abs(Error) <= double.Epsilon)
             return $"{Value.ToString("G5")}";
+
+        if (Math.Abs(Value) <= double.Epsilon)
+        {
+            return $"0 {(char)0x00B1} {Error.ToString("G2")}";
+        }
         
         double tmpValue = Value > 0 ? Value : -Value;
         int powerValue = (int) Math.Floor(Math.Log10(tmpValue));

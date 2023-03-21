@@ -12,25 +12,26 @@ public class Part_2_FocalLengthConcaveLens
 
     public static void Generate()
     {
-        double[,] LensData = new double[,]
+        double[,] lensData = new double[,]
         {
             { 627, 643 },
             { 629, 644 },
             { 625, 646 }
         };
-        ErDouble f1 = new ErDouble(198.7, 1.2);
-        List <Part_1_FocalLengthConvexLensAutokummulation.LensData> data = Part_1_FocalLengthConvexLensAutokummulation.Initialize(LensData);
-        ErDouble mean1 = Part_1_FocalLengthConvexLensAutokummulation.GetMean1(data);
-        ErDouble mean2 = Part_1_FocalLengthConvexLensAutokummulation.GetMean2(data);
+        ErDouble f1 = new ErDouble(198.7, 0.4);
+        List<double> dataPosition1 = Part_1_FocalLengthConvexLensAutokummulation.InitializePosition_x(lensData, 0);
+        List<double> dataPosition2 = Part_1_FocalLengthConvexLensAutokummulation.InitializePosition_x(lensData, 1);
+        ErDouble mean1 = Mantis.Statistics.MeanWithError(dataPosition1);
+        ErDouble mean2 = Mantis.Statistics.MeanWithError(dataPosition2);
         ErDouble k = mean1 - Main_Trial_20_Lenses.defaultObject1Position;
         ErDouble l = mean2 - Main_Trial_20_Lenses.defaultObject1Position;
         ErDouble fgesamt = (k + l) / 2;
-        ErDouble fLinse2 = new ErDouble((f1 * fgesamt / (f1 - fgesamt)).Value, 0.012);//HIER FEHLER AUSGEDACHT - AUFPASSEN
+        ErDouble fLinse2hochminus1 = ((1 / fgesamt) - (1 / f1));
         CurrentTableCreator.Print("Zerstreuungslinse: ");
         CurrentTableCreator.Print($"k = {k} mm");
         CurrentTableCreator.Print($"l = {l} mm");
         CurrentTableCreator.Print($"fgesamt = {fgesamt} mm");
-        CurrentTableCreator.Print($"fLinse2 = {fLinse2}");
+        CurrentTableCreator.Print($"fLinse2 = {fLinse2hochminus1}");
         
 
     }

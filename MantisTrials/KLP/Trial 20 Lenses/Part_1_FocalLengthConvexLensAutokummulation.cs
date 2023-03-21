@@ -12,15 +12,17 @@ public class Part_1_FocalLengthConvexLensAutokummulation
 
     public static void Generate()
     {
-        double[,] LensData = new double[,]
+        double[,] lensData = new double[,]
         {
             {434,435},
             {435,435},
             {433,436},
         };//mm
-        List<LensData> data = Initialize(LensData);
-        ErDouble mean1 = GetMean1(data);
-        ErDouble mean2 = GetMean2(data);
+        List<double> dataPosition1 = InitializePosition_x(lensData,0);
+        List<double> dataPosition2 = InitializePosition_x(lensData, 1);
+        ErDouble mean1 = Mantis.Statistics.MeanWithError(dataPosition1);
+        ErDouble mean2 = Mantis.Statistics.MeanWithError(dataPosition2);
+        
         CurrentTableCreator.Print("Autokumullation: ");
         ErDouble k = mean1 - Main_Trial_20_Lenses.defaultObject1Position;
         ErDouble l = mean2 - Main_Trial_20_Lenses.defaultObject1Position;
@@ -50,17 +52,12 @@ public class Part_1_FocalLengthConvexLensAutokummulation
 
         return sum / data.Count;
     }
-    public static List<LensData> Initialize(double[,] rawData)
+    public static List<double> InitializePosition_x(double[,] rawData, int position)
     {
-        List<LensData> data = new List<LensData>();
+        List<double> data = new List<double>();
         for (int i = 0; i < rawData.GetLength(0); i++)
         {
-            data.Add(new LensData()
-                {
-                    Position1 = new ErDouble(rawData[i,0],2),
-                    Position2 = new ErDouble(rawData[i,1],2)
-                }
-            );
+            data.Add(rawData[i,position]);
         }
 
         return data;

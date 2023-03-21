@@ -11,18 +11,16 @@ public class Part_4_FocalLengthConcaveMirror
 
     public static void Generate()
     {
-        double[] mirrorPosition = new double[]
+        double[,] mirrorPosition = new double[,]
         {
-            553, 552, 553
+            {553,0},
+            {552,0},
+            {553,0}
         };
-        ErDouble sum = new ErDouble(0, 0);
-        for (int i = 0; i < mirrorPosition.Length; i++)
-        {
-            sum += mirrorPosition[i];
-        }
-
-        ErDouble Mittelwert = sum / mirrorPosition.Length;
-        ErDouble Gegenstand = Mittelwert - Main_Trial_20_Lenses.defaultObject1Position;
-        CurrentTableCreator.Print($"f = {Gegenstand/2} mm");
+        List<double> data = Part_1_FocalLengthConvexLensAutokummulation.InitializePosition_x(mirrorPosition, 0);
+        ErDouble mean = Mantis.Statistics.MeanWithError(data);
+        
+        ErDouble gegenstand = mean - Main_Trial_20_Lenses.defaultObject1Position;
+        CurrentTableCreator.Print($"f = {gegenstand/2} mm");
     }
 }
