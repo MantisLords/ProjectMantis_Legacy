@@ -14,18 +14,19 @@ public class Part_1_FocalLengthKonvexLensClassical
     {
         double[,] lensPositions = new double[,]
         {
-            { 49.2, 1145 },
-            { 49.1, 1147 },
-            { 49.2, 1146 },
-            { 49.3, 1148 },
-            { 49.0, 1147 },
-            { 49.0, 1147 },
+            { 492, 1145 },
+            { 491, 1147 },
+            { 492, 1146 },
+            { 493, 1148 },
+            { 490, 1147 },
+            { 490, 1147 },
         };
 
         List<double> data = Part_1_FocalLengthConvexLensAutokummulation.InitializePosition_x(lensPositions, 1);
         ErDouble mean = Mantis.Statistics.MeanWithError(data);
         ErDouble g = mean - Main_Trial_20_Lenses.defaultObject1Position;
         ErDouble b = Main_Trial_20_Lenses.defaultSchirmPostition - mean;
+        CurrentTableCreator.Print($"mean={mean} mm");
         CurrentTableCreator.Print($"g={g} mm");
         CurrentTableCreator.Print($"b={b} mm");
         CurrentTableCreator.Print($"f = {CalculateFrequeny(g,b)} mm");

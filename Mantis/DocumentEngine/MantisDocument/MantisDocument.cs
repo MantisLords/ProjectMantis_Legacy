@@ -58,8 +58,27 @@ public class MantisDocument
     {
         Render();
         PdfDocument.Save(filepath);
-        
+        Random rnd = new Random();
+        int random = rnd.Next(0, 6);
+        switch (random)
+        {
+            case 0:Console.WriteLine("Nützlicher Tipp: wenn dein Fehler zu klein ist multipliziere ihn mit 10!");
+                break;
+            case 1:Console.WriteLine("Vergesse nie: Traue keinem Wert den du nicht selbst gefälscht hast!");
+                break;
+            case 2:Console.WriteLine("Erfinde Messdaten...");
+                break;
+            case 3 : Console.WriteLine("Nützlicher Tipp: wenn dein Fehler zu klein ist multipliziere ihn mit 10!");
+                break;
+            case 4: Console.WriteLine("Rufe Standpunktdaten ab für genaue Bestimmung der Erbeschleunigung...");
+                Thread.Sleep(1000);
+                Console.WriteLine("g = 10");
+                break;
+            case 5: Console.WriteLine("Kopiere Altprotokolle...");
+                break;
+            case 6:Console.WriteLine("Wer sich auf Mantis verlässt wird von mentis verlassen!");
+                break;
+        }
         Console.WriteLine($"{filepath} saved");
-        Console.WriteLine("<3 Ronny");
     }
 }

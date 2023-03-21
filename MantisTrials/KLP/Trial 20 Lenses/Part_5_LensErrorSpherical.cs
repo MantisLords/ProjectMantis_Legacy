@@ -62,7 +62,7 @@ public class Part_5_LensErrorSpherical
         List<DataPoint> points2 = daten2.Select(e => new DataPoint(e.Blende, e.deltaF)).ToList();
         sketchBook.Add(new DataSetSketch("Brennweitendifferenzen",points2));
         GraphCreator creator = new GraphCreator(CurrentDocument, sketchBook, LinearAxis.Auto("Blende/mm"),
-            LinearAxis.Auto("deltaf/mm"));
+            LinearAxis.Auto("deltaf/mm",-5));
 
 
 
