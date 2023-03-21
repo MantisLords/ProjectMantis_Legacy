@@ -26,12 +26,12 @@ public class Part_2_FocalLengthConcaveLens
         ErDouble k = mean1 - Main_Trial_20_Lenses.defaultObject1Position;
         ErDouble l = mean2 - Main_Trial_20_Lenses.defaultObject1Position;
         ErDouble fgesamt = (k + l) / 2;
-        ErDouble fLinse2hochminus1 = ((1 / fgesamt) - (1 / f1));
+        ErDouble fLinse2 = 1/((1 / fgesamt) - (1 / f1));
         CurrentTableCreator.Print("Zerstreuungslinse: ");
         CurrentTableCreator.Print($"k = {k} mm");
         CurrentTableCreator.Print($"l = {l} mm");
         CurrentTableCreator.Print($"fgesamt = {fgesamt} mm");
-        CurrentTableCreator.Print($"fLinse2 = {fLinse2hochminus1}");
+        CurrentTableCreator.Print($"fLinse2 = {fLinse2}");
         
 
     }

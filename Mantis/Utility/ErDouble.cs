@@ -9,12 +9,19 @@ namespace Mantis;
 public struct ErDouble
 {
     public double Value;
-    public double Error;
+
+    private double _error;
+    
+    public double Error
+    {
+        get => _error;
+        set => _error = Math.Abs(value);
+    }
 
     public ErDouble(double value, double error=0)
     {
         Value = value;
-        Error = error;
+        _error = Math.Abs(error);
     }
 
     public static implicit operator ErDouble(double value) => new ErDouble(value);
@@ -46,16 +53,16 @@ public struct ErDouble
     public static ErDouble operator -(ErDouble a, ErDouble b) => -b + a;
 
     public static ErDouble operator *(ErDouble a, ErDouble b)
-        => new ErDouble(a.Value * b.Value, a.Value * b.Value * Math.Sqrt(a.RelErSq + b.RelErSq));
+        => new ErDouble(a.Value * b.Value, Math.Abs(a.Value * b.Value) * Math.Sqrt(a.RelErSq + b.RelErSq));
 
     public static ErDouble operator /(ErDouble a, ErDouble b)
-        => new ErDouble(a.Value / b.Value, a.Value / b.Value * Math.Sqrt(a.RelErSq + b.RelErSq));
+        => new ErDouble(a.Value / b.Value, Math.Abs(a.Value / b.Value) * Math.Sqrt(a.RelErSq + b.RelErSq));
 
     /// <summary>
     /// Raises the ErDouble to the power of "power"
     /// </summary>
     public ErDouble Pow(double power)
-        => new ErDouble(Math.Pow(Value, power), Math.Pow(Value, power) * RelEr * power);
+        => new ErDouble(Math.Pow(Value, power), Math.Abs(Math.Pow(Value, power) * RelEr * power));
 
     /// <summary>
     /// Multiplies the ErDouble with 10^power
