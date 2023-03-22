@@ -24,6 +24,7 @@ public class Main_Trial_20_Lenses
         Part_4_FocalLengthConcaveMirror.Generate();
         Part_5_LensErrorChromatic.Generate();
         Part_5_LensErrorSpherical.Generate();
+        Part_5_LensErrorAstigmatism.Generate();
         CurrentDocument.Save("KLP_Trial20_Lenses.pdf");
     }
 }
