@@ -24,6 +24,7 @@ public class Part_1_FocalLengthKonvexLensClassical
 
         List<double> data = Part_1_FocalLengthConvexLensAutokummulation.InitializePosition_x(lensPositions, 1);
         ErDouble mean = Mantis.Statistics.MeanWithError(data);
+        mean.Error = 4;
         ErDouble g = mean - Main_Trial_20_Lenses.defaultObject1Position;
         ErDouble b = Main_Trial_20_Lenses.defaultSchirmPostition - mean;
         CurrentTableCreator.Print($"mean={mean} mm");

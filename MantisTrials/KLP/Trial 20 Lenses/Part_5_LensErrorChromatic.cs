@@ -31,6 +31,10 @@ public class Part_5_LensErrorChromatic
         ErDouble mean3Red = Mantis.Statistics.MeanWithError(dataRed3);
         ErDouble mean5Blue = Mantis.Statistics.MeanWithError(dataBlue5);
         ErDouble mean5Red = Mantis.Statistics.MeanWithError(dataRed5);
+        mean3Blue.Error = 5;
+        mean3Red.Error = 8;
+        mean5Red.Error = 4;
+        mean5Blue.Error = 4;
         
         CurrentTableCreator.Print($"meanLinse3Rot {mean3Red} mm");
         CurrentTableCreator.Print($"meanLinse3Blau {mean3Blue} mm");

@@ -22,11 +22,14 @@ public class Part_1_FocalLengthConvexLensAutokummulation
         List<double> dataPosition2 = InitializePosition_x(lensData, 1);
         ErDouble mean1 = Mantis.Statistics.MeanWithError(dataPosition1);
         ErDouble mean2 = Mantis.Statistics.MeanWithError(dataPosition2);
-        
+        mean1.Error = 2;
+        mean2.Error = 2;
         CurrentTableCreator.Print("Autokumullation: ");
         ErDouble k = mean1 - Main_Trial_20_Lenses.defaultObject1Position;
         ErDouble l = mean2 - Main_Trial_20_Lenses.defaultObject1Position;
         //CurrentTableCreator.Print($"{mean1}, mean2{mean2} mm");
+        CurrentTableCreator.Print($"mean1 = {mean1} mm");
+        CurrentTableCreator.Print($"mean2 = {mean2} mm");
         CurrentTableCreator.Print($"k = {k} mm");
         CurrentTableCreator.Print($"l = {l} mm");
         CurrentTableCreator.Print($"f = {(k+l)/2} mm");
@@ -34,23 +37,11 @@ public class Part_1_FocalLengthConvexLensAutokummulation
     }
     public static ErDouble GetMean1(List<LensData> data)
     {
-        ErDouble sum = new ErDouble(0, 0);
-        foreach (var e in data)
-        {
-            sum += e.Position1;
-        }
-
-        return sum / data.Count;
+        return data.Select(e => e.Position1.Value).MeanWithError();
     }
     public static ErDouble GetMean2(List<LensData> data)
     {
-        ErDouble sum = new ErDouble(0, 0);
-        foreach (var e in data)
-        {
-            sum += e.Position2;
-        }
-
-        return sum / data.Count;
+        return data.Select(e => e.Position2.Value).MeanWithError();
     }
     public static List<double> InitializePosition_x(double[,] rawData, int position)
     {

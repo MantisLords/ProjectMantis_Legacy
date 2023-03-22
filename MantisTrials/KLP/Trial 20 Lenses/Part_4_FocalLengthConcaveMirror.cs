@@ -21,6 +21,7 @@ public class Part_4_FocalLengthConcaveMirror
         ErDouble mean = Mantis.Statistics.MeanWithError(data);
         
         ErDouble gegenstand = mean - Main_Trial_20_Lenses.defaultObject1Position;
+        mean.Error = 3;
         CurrentTableCreator.Print($"f = {gegenstand/2} mm");
     }
 }

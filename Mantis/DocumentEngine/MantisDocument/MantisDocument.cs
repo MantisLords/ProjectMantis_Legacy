@@ -59,7 +59,7 @@ public class MantisDocument
         Render();
         PdfDocument.Save(filepath);
         Random rnd = new Random();
-        int random = rnd.Next(0, 6);
+        int random = rnd.Next(0, 8);
         switch (random)
         {
             case 0:Console.WriteLine("Nützlicher Tipp: wenn dein Fehler zu klein ist multipliziere ihn mit 10!");
@@ -76,8 +76,13 @@ public class MantisDocument
                 break;
             case 5: Console.WriteLine("Kopiere Altprotokolle...");
                 break;
-            case 6:Console.WriteLine("Wer sich auf Mantis verlässt wird von mentis verlassen!");
+            case 6:Console.WriteLine("Wer sich auf Mantis verlässt wird von Mantis verlassen!");
                 break;
+            case 7:Console.WriteLine("Ein 5% Fehler?... Grund zum Suizid.");
+                break;
+            case 8:Console.WriteLine("Sobald du weißt was du tust höre damit auf!");
+                break;
+            
         }
         Console.WriteLine($"{filepath} saved");
     }
