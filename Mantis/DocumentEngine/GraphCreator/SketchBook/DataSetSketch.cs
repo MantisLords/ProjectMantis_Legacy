@@ -11,6 +11,8 @@ public class DataSetSketch : SketchCommand
     public string Name { get; }
 
     public DataMarkType? Type = null;
+
+    public double? Size;
     
     public DataSetSketch(List<DataPoint> dataPoints) : this("Data Points", dataPoints){}
 
@@ -39,7 +41,7 @@ public class DataSetSketch : SketchCommand
             {
                 localPosition = Matrix3x3.Translate(pos),
                 Style = style.DataMark,
-                Size = style.DataMarkSize,
+                Size = Size??style.DataMarkSize,
                 Type = Type ?? DataMarkType.Cross
             });
             

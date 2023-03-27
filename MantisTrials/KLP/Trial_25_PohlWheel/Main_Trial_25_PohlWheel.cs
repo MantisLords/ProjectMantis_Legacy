@@ -13,6 +13,7 @@ public class Main_Trial_25_PohlWheel
     public const double CURRENT_ERROR = 0.01;
     public const double VOLTAGE_ERROR = 0.1;
     public const double FREQUENCY_ERROR = 0.1;
+    public const double PHASE_DIFF_REL_ERROR = 0.001;
     
 
     public static void Process()

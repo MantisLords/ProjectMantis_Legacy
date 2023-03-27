@@ -14,11 +14,11 @@ public class Homework
 {
  public static MantisDocument CurrentDocument = Main_Trial_25_PohlWheel.CurrentDocument;
  public static TableCreator CurrentTableCreator = Main_Trial_25_PohlWheel.CurrentTableCreator;
- private const double deltaQuotient = 0.03;
+ private const double DeltaQuotient = 0.03;
 
  public static void Generate()
  {
-     List<WheelData> data = InitializeData();
+     List<WheelData> data = CalculateTheoreticalResonanzCurve(DeltaQuotient);
      string[][] tableContent = new string[data.Count][];
      for (int i = 0; i < data.Count; i++)
      {
@@ -39,11 +39,11 @@ public class Homework
 
  }
 
- private static List<WheelData> InitializeData()
+ public static List<WheelData> CalculateTheoreticalResonanzCurve(double deltaQuotient,double finePointDif = 0.02)
  {
      List<WheelData> data = new List<WheelData>();
      double sum = 0;
-     for (int i = 0; i < 30; i++)
+     while (sum <= 1.8)
      {
          data.Add(new WheelData()
              {
@@ -53,7 +53,7 @@ public class Homework
          );
          if (sum >= 0.8 && sum < 1.1)
          {
-             sum += 0.02;
+             sum += finePointDif;
          }
          else
          {
@@ -63,10 +63,5 @@ public class Homework
      }
 
      return data;
- }
- private struct WheelData
- {
-  public double freqQuotient;
-  public double AmplitudeQuotient;
  }
 }

@@ -66,26 +66,14 @@ public static class Part_3_ResonanceCurves
         var resDaten200mA = InitializeData(daten200mA);
 
         var resDaten400mA = InitializeData(daten400mA);
-        SketchBook sketchBook = new SketchBook("Resonanzkurve bei 200mA");
-        PleaseEndThisAgony(resDaten200mA,"200", sketchBook);
-        List<WheelData> data = InitializeDataHomework();
-        currentTableCreator.AddTable("Theoretische Daten fuer delta",
-            new []{"w/w0", "A/A0"},
-            data.Select(e=>new string[]{e.freqQuotient.ToString("G4"),e.AmplitudeQuotient.ToString("G4")}),
-            GlobalStyles.StandardTable,1);
-        SketchBook sketchBook2 = new SketchBook("Resonanzkurve bei 400mA");
-        var points = data.Select(e => new DataPoint(e.freqQuotient, e.AmplitudeQuotient)).ToList();
-        sketchBook2.Add(new DataSetSketch("bei 400mA",points));
         
-        currentTableCreator.AddTable("Theoretische Werte für I = 400mA",
-            headers:new string[]{"w/w0","A/A0"},
-            content:data.Select(e => new string[]{e.freqQuotient.ToString("G4"),e.AmplitudeQuotient.ToString("G4")}));
-        
-        PleaseEndThisAgony(resDaten400mA,"400",sketchBook2);
+        PleaseEndThisAgony(resDaten200mA,"200", new ErDouble(0.0314,0.0031));
+
+        PleaseEndThisAgony(resDaten400mA,"400",new ErDouble(0.1560,0.0078));
 
     }
 
-    public static void PleaseEndThisAgony(List<ResDaten> daten, string strom,SketchBook sketchBook)
+    public static void PleaseEndThisAgony(List<ResDaten> daten, string strom,ErDouble dampingCoefficient)
     {
         for (var i = 0; i < daten.Count; i++)
         {
@@ -112,13 +100,26 @@ public static class Part_3_ResonanceCurves
             smallTable);
 
         currentTableCreator.AddPageBreak();
+
         currentTableCreator.AddTable($"Resonanz bei {strom}mA - Teil 2",
     new string[]{"Phasenvershiebung" ,"A / mA", "A/A0"},
     daten.Select(e => new string[] {e.PhaseDifference.ToString(),e.A.ToString(), e.AQuotient.ToString()}),
     smallTable);
         currentTableCreator.AddPageBreak();
+        
+        
         List<DataPoint> points = daten.Select(e => new DataPoint(e.WQuotient, e.AQuotient)).ToList();
-    sketchBook.Add(new DataSetSketch($"Resonanzkurve bei {strom}mA", points));
+        SketchBook sketchBook = new SketchBook($"Resonanzkurve bei {strom}mA");
+        sketchBook.Add(new DataSetSketch($"Resonanzkurve bei {strom}mA", points));
+    
+    List<WheelData> theoreticalValues = Homework.CalculateTheoreticalResonanzCurve((dampingCoefficient/W0).Value,0.005);
+    
+    var theroeticalPoints = theoreticalValues.Select(e => new DataPoint(e.freqQuotient, e.AmplitudeQuotient)).ToList();
+    sketchBook.Add(new DataSetSketch("theo",theroeticalPoints){Type = DataMarkType.Circle,Size = 0.5});
+    
+    currentTableCreator.AddTable($"Theoretische Werte für I = {strom}mA",
+        headers:new string[]{"w/w0","A/A0"},
+        content:theoreticalValues.Select(e => new string[]{e.freqQuotient.ToString("G4"),e.AmplitudeQuotient.ToString("G4")}));
 
     GraphCreator creator = new GraphCreator(CurrentDocument, sketchBook, LinearAxis.Auto("w/w0"),
         LinearAxis.Auto("A/A0"),
@@ -153,41 +154,13 @@ public static class Part_3_ResonanceCurves
 
         return maxEl;
     }
-
-    public static List<WheelData> InitializeDataHomework()
-    {
-        List<WheelData> data = new List<WheelData>();
-        double sum = 0;
-        for (int i = 0; i < 30; i++)
-        {
-            data.Add(new WheelData()
-                {
-                    AmplitudeQuotient = 1/(Math.Sqrt(Math.Pow(1-Math.Pow(sum,2),2)+Math.Pow(2*sum*deltaQuotient.Value,2))),
-                    freqQuotient = sum
-                }
-            );
-            if (sum >= 0.8 && sum < 1.1)
-            {
-                sum += 0.02;
-            }
-            else
-            {
-                sum += 0.1; 
-            }
-         
-        }
-
-        return data;
-    }
+    
     public static List<ResDaten> InitializeData(double[,] rawData)
     {
         var data = new List<ResDaten>();
         for (var i = 0; i < rawData.GetLength(0); i++)
         {
-            double phaseDif = - Mod2PI(rawData[i, 2]) + Mod2PI(rawData[i, 3]);
-            if (phaseDif < 0)
-                phaseDif += 2 * Math.PI;
-            phaseDif -= Math.PI;
+            var phaseDif = PhaseDif(rawData[i,2],rawData[i,3]);
             data.Add(new ResDaten
                 {
                     Frequenz = new ErDouble(rawData[i, 0], Main_Trial_25_PohlWheel.FREQUENCY_ERROR),
@@ -199,6 +172,23 @@ public static class Part_3_ResonanceCurves
         }
 
         return data;
+    }
+
+    private static ErDouble PhaseDif(double phi1,double phi2)
+    {
+        phi1 = Mod2PI(phi1);
+        phi2 = Mod2PI(phi2);
+
+        if (phi1 > phi2)
+            phi2 += 2 * Math.PI;
+
+        phi2 -= Math.PI;
+        
+        ErDouble phaseDifRad = new ErDouble(phi2, phi2 * Main_Trial_25_PohlWheel.PHASE_DIFF_REL_ERROR) -
+                               new ErDouble(phi1, phi1 * Main_Trial_25_PohlWheel.PHASE_DIFF_REL_ERROR);
+
+        phaseDifRad -= 0.39;
+        return phaseDifRad / Math.PI;
     }
 
     private static double Mod2PI(double value)
@@ -215,9 +205,10 @@ public static class Part_3_ResonanceCurves
         public ErDouble AQuotient;
         public ErDouble PhaseDifference;
     }
-    public struct WheelData
-    {
-        public double freqQuotient;
-        public double AmplitudeQuotient;
-    }
+}
+
+public struct WheelData
+{
+    public double freqQuotient;
+    public double AmplitudeQuotient;
 }
