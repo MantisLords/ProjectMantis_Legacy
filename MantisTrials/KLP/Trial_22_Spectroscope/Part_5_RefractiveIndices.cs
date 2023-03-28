@@ -74,6 +74,32 @@ public class Part_5_RefractiveIndices
         GraphCreator creator3 = new GraphCreator(CurrentDocument, sketchBook3, xAxis: LinearAxis.Auto("Lamda",400),
             yAxis: LinearAxis.Auto("y",57),
             GraphOrientation.Landscape);
+
+        GenerateIndexTable(data);
+    }
+
+    public static ErDouble CalculateRefractiveIndex(ErDouble angle)
+    {
+        return ErDouble.Sin((60*Math.PI/180 + angle*Math.PI/180) / 2)*2;
+    }
+
+    public static void GenerateIndexTable(List<PrismData> listdata)
+    {
+        List<string[]> dataForTable = new List<string[]>();
+        for (int i = 0; i < listdata.Count; i++)
+        {
+            dataForTable.Add(new string[]
+            {
+                listdata[i].Wavelength.ToString(),
+                CalculateRefractiveIndex(listdata[i].Prism1).ToString(),
+                CalculateRefractiveIndex(listdata[i].Prism2).ToString(),
+                CalculateRefractiveIndex(listdata[i].Prism3).ToString()
+            });
+        }
+        CurrentTableCreator.AddTable("Brechungsidizes",
+            new string[]{"Wellenlänge","Prisma 1","Prisma 2","Prisma 3"},
+            dataForTable,
+            GlobalStyles.StandardTable,times: 2);
     }
 
     public static List<PrismData> Initialize(double[] rawData1, double[] rawData2, double[] rawData3)
