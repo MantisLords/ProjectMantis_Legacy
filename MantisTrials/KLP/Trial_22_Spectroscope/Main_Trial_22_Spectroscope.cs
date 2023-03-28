@@ -15,6 +15,7 @@ public class Main_Trial_22_Spectroscope
         
         Part_1_GridConstant.Generate();
         Part_5_RefractiveIndices.Generate();
+        Part_3_SpectrumOfHgCdLamp.Generate();
         CurrentDocument.Save("KLP_Trial_22_Spectroscope_Printout.pdf");
         
     }

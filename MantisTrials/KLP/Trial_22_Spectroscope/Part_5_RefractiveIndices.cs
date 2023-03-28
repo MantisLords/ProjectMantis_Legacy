@@ -52,7 +52,7 @@ public class Part_5_RefractiveIndices
         CurrentTableCreator.AddTable("Brechzahlen verschiedener Prismen",
             new string[]{"Wellenlänge / nm","Prisma1 / °","Prisma2 / °","Prisma3 / °"},
             data.Select(e=>new string[]{e.Wavelength.ToString(),e.Prism1.ToString(),e.Prism2.ToString(),e.Prism3.ToString()}),
-            GlobalStyles.StandardTable);
+            GlobalStyles.StandardTable,times:2);
 
         SketchBook sketchBook1 = new SketchBook("Brechungszahlen vershiedener Prismen");
         List<DataPoint> points1 = data.Select(e => new DataPoint(e.Wavelength,e.Prism1)).ToList();

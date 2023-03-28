@@ -36,6 +36,8 @@ public class Part_1_GridConstant
         LinearMinMaxFit fit = new LinearMinMaxFit(points);
         fit.SetReading(0.25,false,2,false);
         sketchBook.Add(new StraightSketch(fit));
+        CurrentTableCreator.Print(fit.ToString());
+        CurrentTableCreator.Print($"Gitterconst: {(1/fit.GetSlope()) * wavelengthPart1}");
 
         
         GraphCreator creator = new GraphCreator(document: CurrentDocument, sketchBook: sketchBook,
