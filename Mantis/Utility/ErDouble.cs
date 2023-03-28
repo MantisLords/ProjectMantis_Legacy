@@ -46,10 +46,10 @@ public struct ErDouble
     public static ErDouble operator -(ErDouble a, ErDouble b) => -b + a;
 
     public static ErDouble operator *(ErDouble a, ErDouble b)
-        => new ErDouble(a.Value * b.Value, a.Value * b.Value * Math.Sqrt(a.RelErSq + b.RelErSq));
+        => new ErDouble(a.Value * b.Value,  Math.Sqrt(Math.Pow(b.Value * a.Error,2) + Math.Pow(a.Value * b.Error,2)));
 
     public static ErDouble operator /(ErDouble a, ErDouble b)
-        => new ErDouble(a.Value / b.Value, a.Value / b.Value * Math.Sqrt(a.RelErSq + b.RelErSq));
+        => new ErDouble(a.Value / b.Value, Math.Sqrt(Math.Pow(1/b.Value * a.Error,2) + Math.Pow(a.Value * b.Error/b.Value/b.Value,2)));
 
     /// <summary>
     /// Raises the ErDouble to the power of "power"
@@ -74,6 +74,20 @@ public struct ErDouble
         return res;
     }
 
+    public static ErDouble Sin(ErDouble argument)
+    {
+        ErDouble res = Math.Sin(argument.Value);
+        res.Error = Math.Cos(argument.Value) * argument.Error;
+        return res;
+    }
+    
+    public static ErDouble Cos(ErDouble argument)
+    {
+        ErDouble res = Math.Cos(argument.Value);
+        res.Error = Math.Sin(argument.Value) * argument.Error;
+        return res;
+    }
+
     /// <summary>
     /// Returns the natural log of the "argument"
     /// </summary>
@@ -86,7 +100,7 @@ public struct ErDouble
     
     public override string ToString()
     {
-        if (Math.Abs(Error) <= double.Epsilon)
+        if (Math.Abs(Error) <=  double.Epsilon)
             return $"{Value.ToString("G5")}";
         
         double tmpValue = Value > 0 ? Value : -Value;

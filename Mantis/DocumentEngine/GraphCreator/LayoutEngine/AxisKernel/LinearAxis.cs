@@ -49,7 +49,7 @@ public class LinearAxis : AxisKernel
                 {
                     foreach (var dataPoint in dataSetSketch.Data)
                     {
-                        maxValue = Math.Max(maxValue, (isYAxis? dataPoint.Y.Max:dataPoint.X.Max));
+                        maxValue = Math.Max(maxValue, (isYAxis ? dataPoint.Y.Max : dataPoint.X.Max));
                     }
                 }
             }
@@ -57,7 +57,7 @@ public class LinearAxis : AxisKernel
             double range = maxValue - ZeroUnit;
             double minValuePerMM = range / Length;
 
-            if (range <= 0)
+            if (range <= 0|| !double.IsFinite(range))
                 throw new ArgumentException(
                     $"Auto Layout failed. Maximum data value {maxValue} is smaller than zeroUnit {ZeroUnit}");
 
@@ -115,6 +115,9 @@ public class LinearAxis : AxisKernel
     private int GetDigitsOfSignificantGridLabeling()
     {
         double range = MMToUnit(1) - MMToUnit(0);
+        if (range <= 0)
+            return 0;
+        
         int power = (int) Math.Floor(Math.Log10(range));
 
         if (power >= 0)
@@ -123,6 +126,8 @@ public class LinearAxis : AxisKernel
         {
             power = -power;
         }
+
+        power = Math.Min(power, 14);
 
         return power;
     }

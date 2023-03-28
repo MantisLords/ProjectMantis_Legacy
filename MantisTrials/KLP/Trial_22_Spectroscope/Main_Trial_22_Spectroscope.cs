@@ -13,5 +13,9 @@ public class Main_Trial_22_Spectroscope
         CurrentDocument = new MantisDocument(MantisDocument.PrinterPhysicLibraryUniWue);
         CurrentTableCreator = new TableCreator(CurrentDocument);
         
+        Part_1_GridConstant.Generate();
+        Part_5_RefractiveIndices.Generate();
+        CurrentDocument.Save("KLP_Trial_22_Spectroscope_Printout.pdf");
+        
     }
 }

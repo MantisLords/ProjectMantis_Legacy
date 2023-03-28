@@ -1,6 +1,7 @@
 using Mantis;
 using Mantis.DocumentEngine;
 using Mantis.DocumentEngine.TableCreator;
+using Mantis.Utility;
 using MantisTrials.KLP.Trial_23_Elasticity;
 using MantisTrials.KLP.Trial_25_PohlWheel;
 
@@ -16,28 +17,46 @@ public class Part_1_GridConstant
     {
         double[,] DataForGrid = new double[,]
         {
-            { 0, 307.8 },
-            { 1, 288.0 },
-            { 1, 327.3 },
-            { 2, 264.6 },
-            { 2, 349.5 }
+            { 0, 307.8 ,307.8},
+            { 1, 288.0 ,327.3},
+            { 2, 264.6 ,349.5},
         };//BEUGUNGSORDNUNG , WINKEL
 
         List<GridData> data = Initialize(DataForGrid);
         List<GridData> bereinigteDaten = BereinigeDaten(data);
-        ErDouble[,] gridConstants = CalculateGridConstant(bereinigteDaten);
-        CurrentTableCreator.AddTable("Part1",new string[]{"Ordnung","gitterconst"},gridConstants.ToString(),GlobalStyles.StandardTable);
+        List<GridData> gridConstant = CalculateGridConstant(bereinigteDaten);
+        CurrentTableCreator.AddTable("Part1",new string[]{"Ordnung","mean","SinAngle"},
+            gridConstant.Select(e=>new string[]{e.Order.ToString(),e.meanAngle.ToString(),e.SinAngle.ToString()}),
+            GlobalStyles.StandardTable);
+        
+        SketchBook sketchBook = new SketchBook("Graph1");
+        List<DataPoint> points = gridConstant.Select(e => new DataPoint(e.Order, e.SinAngle)).ToList();
+        
+        sketchBook.Add(new DataSetSketch("winkeldaten",points));
+        LinearMinMaxFit fit = new LinearMinMaxFit(points);
+        fit.SetReading(0.25,false,2,false);
+        sketchBook.Add(new StraightSketch(fit));
+
+        
+        GraphCreator creator = new GraphCreator(document: CurrentDocument, sketchBook: sketchBook,
+            xAxis: LinearAxis.Auto("Order"),
+            yAxis: LinearAxis.Auto($"Sinus"));
 
 
     }
 
-    public static ErDouble[,] CalculateGridConstant(List<GridData> listdata)
+    public static List<GridData> CalculateGridConstant(List<GridData> listdata)
     {
-        ErDouble[,] data = new ErDouble[listdata.Count,1];
+        List<GridData> data = new List<GridData>();
         for (int i = 0; i < listdata.Count; i++)
         {
-            data[i, 0] = listdata[i].Order;
-            data[i, 1] = listdata[i].Order * wavelengthPart1 / Math.Sin(listdata[i].Angle.Value);
+            data.Add(new GridData()
+                {
+                    Order = listdata[i].Order,
+                    meanAngle = listdata[i].meanAngle,
+                    SinAngle = ErDouble.Sin(listdata[i].meanAngle*Math.PI/180)
+                }
+            );
         }
 
         return data;
@@ -45,11 +64,19 @@ public class Part_1_GridConstant
     public static List<GridData> BereinigeDaten(List<GridData> dataList)
     {
         List<GridData> data = new List<GridData>();
-        for (int i = 1; i < dataList.Count; i+=2)
+        for (int i = 0; i < dataList.Count; i++)
         {
-            GridData e = dataList[i];
-            e.Angle = dataList[i].Angle + dataList[i + 1].Angle / 2;
-            data[i] = e;
+            ErDouble zeroAngle = dataList[0].Angle1;
+            ErDouble tempMeanAngle = ((zeroAngle - dataList[i].Angle1) + (dataList[i].Angle2 - zeroAngle)) / 2;
+            
+            data.Add(new GridData()
+                {
+                    Order = dataList[i].Order,
+                    Angle1 = dataList[i].Angle1,
+                    Angle2 = dataList[i].Angle2,
+                    meanAngle = tempMeanAngle
+                }
+            );
         }
 
         return data;
@@ -62,7 +89,8 @@ public class Part_1_GridConstant
             data.Add(new GridData()
                 {
                     Order = new ErDouble(rawData[i,0],0),
-                    Angle = new ErDouble(rawData[i,1],0.1)
+                    Angle1 = new ErDouble(rawData[i,1],0.1),
+                    Angle2 = new ErDouble(rawData[i,2],0.1)
                 }
             );
         }
@@ -70,9 +98,12 @@ public class Part_1_GridConstant
         return data;
     }
 
-    private struct GridData
+    public struct GridData
     {
         public ErDouble Order;
-        public ErDouble Angle;
+        public ErDouble Angle1;
+        public ErDouble Angle2;
+        public ErDouble meanAngle;
+        public ErDouble SinAngle;
     }
 }
