@@ -34,10 +34,17 @@ public class Part_1_GridConstant
         
         sketchBook.Add(new DataSetSketch("winkeldaten",points));
         LinearMinMaxFit fit = new LinearMinMaxFit(points);
-        fit.SetReading(0.25,false,2,false);
+        fit.SetReading(0.25,false,1.75,false);
         sketchBook.Add(new StraightSketch(fit));
         CurrentTableCreator.Print(fit.ToString());
         CurrentTableCreator.Print($"Gitterconst: {(1/fit.GetSlope()) * wavelengthPart1}");
+
+        ErDouble point1y = new ErDouble(fit.Optimal.Reading.Value.P1.y, 0.002);
+        ErDouble point2y = new ErDouble(fit.Optimal.Reading.Value.P2.y, 0.002);
+        ErDouble slope = (point2y-point1y)/1.5;
+        CurrentTableCreator.Print($"slope with Error = {slope}");
+        CurrentTableCreator.Print($"Gitterconst: {(1/slope) * wavelengthPart1}");
+        
 
         
         GraphCreator creator = new GraphCreator(document: CurrentDocument, sketchBook: sketchBook,

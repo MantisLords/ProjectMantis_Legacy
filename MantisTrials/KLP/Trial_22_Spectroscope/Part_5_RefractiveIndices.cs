@@ -75,31 +75,12 @@ public class Part_5_RefractiveIndices
             yAxis: LinearAxis.Auto("y",57),
             GraphOrientation.Landscape);
 
-        GenerateIndexTable(data);
+       GenerateIndexTable(data);
     }
 
     public static ErDouble CalculateRefractiveIndex(ErDouble angle)
     {
         return ErDouble.Sin((60*Math.PI/180 + angle*Math.PI/180) / 2)*2;
-    }
-
-    public static void GenerateIndexTable(List<PrismData> listdata)
-    {
-        List<string[]> dataForTable = new List<string[]>();
-        for (int i = 0; i < listdata.Count; i++)
-        {
-            dataForTable.Add(new string[]
-            {
-                listdata[i].Wavelength.ToString(),
-                CalculateRefractiveIndex(listdata[i].Prism1).ToString(),
-                CalculateRefractiveIndex(listdata[i].Prism2).ToString(),
-                CalculateRefractiveIndex(listdata[i].Prism3).ToString()
-            });
-        }
-        CurrentTableCreator.AddTable("Brechungsidizes",
-            new string[]{"Wellenlänge","Prisma 1","Prisma 2","Prisma 3"},
-            dataForTable,
-            GlobalStyles.StandardTable,times: 2);
     }
 
     public static List<PrismData> Initialize(double[] rawData1, double[] rawData2, double[] rawData3)
@@ -119,6 +100,31 @@ public class Part_5_RefractiveIndices
 
         return data;
     }
+
+    public static void GenerateIndexTable(List<PrismData> listdata)
+    {
+        List<string[]> dataForTable = new List<string[]>();
+        for (int i = 0; i < listdata.Count; i++)
+        {
+            dataForTable.Add(new string[]
+            {
+                listdata[i].Wavelength.ToString(),
+                CalculateRefractiveIndex(listdata[i].Prism1).ToString(),
+                CalculateRefractiveIndex(listdata[i].Prism2).ToString(),
+                CalculateRefractiveIndex(listdata[i].Prism3).ToString()
+            });
+        }
+        CurrentTableCreator.AddTable("Brechungsidizes",
+            new string[]{"Wellenlänge / nm","Prisma 1","Prisma 2","Prisma 3"},
+            dataForTable,
+            GlobalStyles.StandardTable,times: 2);
+        CurrentTableCreator.AddPageBreak();
+        CurrentTableCreator.Print("Dn Prisma1 = " + (CalculateRefractiveIndex( listdata[8].Prism1)-CalculateRefractiveIndex(listdata[5].Prism1)).ToString());
+        CurrentTableCreator.Print("Dn Prisma2 = " + (CalculateRefractiveIndex(listdata[8].Prism2)-CalculateRefractiveIndex(listdata[5].Prism2)).ToString());
+        CurrentTableCreator.Print("Dn Prisma3 = " + (CalculateRefractiveIndex(listdata[8].Prism3)-CalculateRefractiveIndex(listdata[5].Prism3)).ToString());
+        
+    }
+
     public struct PrismData
     {
         public ErDouble Prism1;
